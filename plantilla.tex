@@ -31,35 +31,45 @@
 
 \section{Entornos}
 
+Existen tres entornos definidos cada una con una versión alterna.
 
 \begin{exercise}
-  Caja de ejercicios 1
+  Entorno \verb|{exercise}|. Se autonumera.
 \end{exercise}
 
 \begin{exercise*}
-  Caja auxiliar
+  Entorno \verb|{exercise*}|. Es un auxiliar de la caja anterior.
 \end{exercise*}
 
-Cambio de nombre de ``Ejercicio'' a ``problema''.\SetExerciseTitle{Problema}
+Se puede cambiar el título de ``Ejercicio'' con el comando \verb|\SetExerciseTitle| en algún lugar del documento (antes de la caja). También se puede poner una numeración personalizada colocando un parámetro opcional (con corchetes), si se deja vacío no se numera. 
+
+
+\SetExerciseTitle{Problema}
 
 \begin{exercise}[(Numeración especial)]
-  Caja de ejercicios 2
+  Caja de ejercicios con numeración especial y \verb|\SetExerciseTitle{Problema}|.
 \end{exercise}
 
-\begin{definition}[Nombre de la definición]
-  Cada de definición
+\begin{exercise}[]
+  Caja de ejercicios con la numeración vacía y \verb|\SetExerciseTitle{Problema}|.
+\end{exercise}
+
+
+
+\begin{definition}[Texto opcional]
+  Entorno \verb|{definition}|. Se autonumera y se puede poner un texto opcional.
 \end{definition}
 
 \begin{definition*}
-  Cada de definición
+  Entorno \verb|{definition*}|. Sin numeración.
 \end{definition*}
 
 \begin{lemma}
-  Lema
+  Entorno \verb|{lema}|. Se autonumera, es un entorno creado con \verb|\newtheorem|.
 \end{lemma}
 
 \begin{lemma*}
-  Lema
+  Entorno \verb|{lema*}|. Sin numeración.
 \end{lemma*}
 
 
