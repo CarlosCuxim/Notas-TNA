@@ -15,8 +15,11 @@
 
 
 % PAQUETES REQUERIDOS ----------------------------------------------------------
+\RequirePackage{amsthm}
+
 \RequirePackage{tcolorbox}
   \tcbuselibrary{breakable}
+  \tcbuselibrary{skins}
 
 
 
@@ -26,20 +29,102 @@
 \colorlet{qx-box-frame}{blue!50!black}
 \colorlet{qx-box-back}{blue!5}
 
-% Entorno {exercise} y {exercise*} ---------------------------------------------
+
+
+% CAJAS {exercise} Y {exercise*} -----------------------------------------------
 
 % Contador
 \newcounter{qxExercise}
 
+% Titulo
+\newcommand*{\qxExerciseTitle}{Ejercicio}
+\newcommand*{\SetExerciseTitle}[1]{\renewcommand*{\qxExerciseTitle}{#1}}
+
 % Definición de la caja
-\newtcolorbox{exercise}[1][\refstepcounter{qxExercise}\theqxExercise]
-    {
-      title       = {Ejercicio #1.},
-      colframe    = qx-box-frame,
-      colback     = qx-box-back,
-      fonttitle   = \bfseries,
-      breakable,
-      parbox      = false,
-      before skip = \bigskipamount,
-      after skip  = \medskipamount
-    }
+\newtcolorbox{exercise}[1][\refstepcounter{qxExercise}\theqxExercise]{
+  title       = {\qxExerciseTitle\ifx\empty#1\empty.\else\space#1.\fi},
+  colframe    = qx-box-frame,
+  colback     = qx-box-back,
+  fonttitle   = \bfseries,
+  parbox      = false,
+  before skip = \bigskipamount,
+  after skip  = \medskipamount,
+  breakable
+}
+
+% Caja auxiliar ejercicios
+\newtcolorbox{exercise*}{
+  colframe    = qx-box-frame,
+  colback     = qx-box-back,
+  fonttitle   = \bfseries,
+  parbox      = false,
+  before skip = \bigskipamount,
+  after skip  = \medskipamount,
+  breakable
+}
+
+
+
+% CAJAS {definition} Y {definition*} -------------------------------------------
+
+% Contador
+\newcounter{qxDefinition}
+
+% Definición de la caja
+\newtcolorbox{definition}[1][\relax]{
+  title       = {\refstepcounter{qxDefinition}Definición \theqxDefinition\ifx#1\relax.\else\space{\normalfont(#1)}.\fi},
+  coltitle    = black,
+  fonttitle   = \bfseries,
+  colback     = white,
+  colframe    = qx-box-frame,
+  parbox      = false,
+  parbox      = false,
+  top         = 1.5mm+\tcboxedtitleheight/4,
+  before skip = \bigskipamount,
+  after skip  = \bigskipamount,
+  sharp corners,
+  breakable,
+  enhanced,
+  attach boxed title to top left = {yshift = -\tcboxedtitleheight/2, xshift = 4mm-0.5mm},
+  boxed title style = {
+                          colback=white,
+                          left=0.5mm,right=0.5mm,
+                          boxsep=1mm,
+                          frame empty
+                        }
+}
+
+% Definición de la caja sin numeración
+\newtcolorbox{definition*}[1][\relax]{
+  title       = {Definición.},
+  coltitle    = black,
+  fonttitle   = \bfseries,
+  colback     = white,
+  colframe    = qx-box-frame,
+  parbox      = false,
+  parbox      = false,
+  top         = 1.5mm+\tcboxedtitleheight/4,
+  before skip = \bigskipamount,
+  after skip  = \bigskipamount,
+  sharp corners,
+  breakable,
+  enhanced,
+  attach boxed title to top left = {yshift = -\tcboxedtitleheight/2, xshift = 4mm-0.5mm},
+  boxed title style = {
+                          colback=white,
+                          left=0.5mm,right=0.5mm,
+                          boxsep=1mm,
+                          frame empty
+                        }
+}
+
+
+
+% ENTORNOS {lema} Y {lema*} ----------------------------------------------------
+
+\newtheorem{lemma}{Lema}
+\newtheorem*{lemma*}{Lema}
+
+
+
+\endinput
