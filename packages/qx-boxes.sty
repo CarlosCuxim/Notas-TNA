@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/qx-boxes}
+
+
+
+% ==============================================================================
+% ---------------------- PAQUETE CREADO POR CARLOS CUXIM -----------------------
+%
+% Este paquete contiene los macros relacionados con las cajas de ejercicios.
+% Contiene las definiciones de los entornos {exercises}, {exercises*}, {lema} y
+% {definition}.
+%
+% ==============================================================================
+
+
+
+% PAQUETES REQUERIDOS ----------------------------------------------------------
+\RequirePackage{tcolorbox}
+  \tcbuselibrary{breakable}
+
+
+
+% COLORES ----------------------------------------------------------------------
+
+% Colores de las cajas
+\colorlet{qx-box-frame}{blue!50!black}
+\colorlet{qx-box-back}{blue!5}
+
+% Entorno {exercise} y {exercise*} ---------------------------------------------
+
+% Contador
+\newcounter{qxExercise}
+
+% Definición de la caja
+\newtcolorbox{exercise}[1][\refstepcounter{qxExercise}\theqxExercise]
+    {
+      title       = {Ejercicio #1.},
+      colframe    = qx-box-frame,
+      colback     = qx-box-back,
+      fonttitle   = \bfseries,
+      breakable,
+      parbox      = false,
+      before skip = \bigskipamount,
+      after skip  = \medskipamount
+    }

@@ -1,0 +1,9 @@
+*.aux
+*.fdb_latexmk
+*.fdb
+*.fls
+*.log
+*.pdf
+*.gz
+
+.vscode/
