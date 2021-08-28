@@ -1,0 +1,84 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/qx-math}
+
+
+
+% ==============================================================================
+% ---------------------- PAQUETE CREADO POR CARLOS CUXIM -----------------------
+%
+% Este paquete contiene algunos macros matemáticos útiles.
+%
+% ==============================================================================
+
+
+
+% PAQUETES REQUERIDOS ----------------------------------------------------------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+
+
+% OPERADORES -------------------------------------------------------------------
+
+\DeclareMathOperator{\varRe}{Re}
+\DeclareMathOperator{\varIm}{Im}
+
+
+
+% OPERADORES BINARIOS ----------------------------------------------------------
+
+% Producto interno
+\newcommand{\bcdot}{\boldsymbol\cdot}
+
+
+
+% SIMBOLOS DE CONJUNTOS --------------------------------------------------------
+
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\C}{\mathbb{C}}
+
+
+
+% ENTORNOS MATEMÁTICAS ---------------------------------------------------------
+
+% Entorno para matrices más complejas
+\newenvironment{spmatrix}[1]{\left(\begin{array}{@{}#1@{}}}{\end{array}\right)}
+\newenvironment{sbmatrix}[1]{\left[\begin{array}{@{}#1@{}}}{\end{array}\right]}
+
+
+
+% GESTION DE ECUACIONES --------------------------------------------------------
+
+% Agrega la numeración aunque el entorno no lo incluya
+\newcommand*{\tagthis}{\refstepcounter{equation}\tag{\theequation}}
+
+% Conectores de ecuaciones "y" y "o"
+\newcommand*{\Eqand}{\qquad\text{y}\qquad}
+\newcommand*{\eqand}{\quad\text{y}\quad}
+\newcommand*{\Eqor}{\qquad\text{o}\qquad}
+\newcommand*{\eqor}{\quad\text{o}\quad}
+
+
+
+% INTERCAMBIO DE COMANDOS ------------------------------------------------------
+
+% Comando para intercambiar el valor de dos comandos
+\def\qxSwapCommands#1#2{\let\qxAux=#1\let#1=#2\let#2=\qxAux}
+
+\qxSwapCommands\epsilon\varepsilon
+\qxSwapCommands\Re\varRe
+\qxSwapCommands\Im\varIm
+
+
+
+% FUNCIONES AUXILIARES ---------------------------------------------------------
+
+\newcommand*{\ds}{\displaystyle}
+\newcommand*{\bec}{\mathbf}
+
+
+
+\endinput
