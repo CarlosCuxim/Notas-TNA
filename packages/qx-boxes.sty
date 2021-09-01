@@ -53,7 +53,8 @@
 }
 
 % Caja auxiliar ejercicios
-\newtcolorbox{exercise*}{
+\newtcolorbox{exercise*}[1][]{
+  title = {#1},
   colframe    = qx-box-frame,
   colback     = qx-box-back,
   fonttitle   = \bfseries,
@@ -96,7 +97,7 @@
 
 % Definición de la caja sin numeración
 \newtcolorbox{definition*}[1][\relax]{
-  title       = {Definición.},
+  title       = {Definición\ifx#1\relax.\else\space{\normalfont(#1)}.\fi},
   coltitle    = black,
   fonttitle   = \bfseries,
   colback     = white,
