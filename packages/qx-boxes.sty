@@ -15,7 +15,10 @@
 
 
 % PAQUETES REQUERIDOS ----------------------------------------------------------
+
+\RequirePackage{amsmath}
 \RequirePackage{amsthm}
+
 
 \RequirePackage{tcolorbox}
   \tcbuselibrary{breakable}
@@ -125,6 +128,12 @@
 
 \newtheorem{lemma}{Lema}
 \newtheorem*{lemma*}{Lema}
+
+
+
+% ENTORNO {answer} -------------------------------------------------------------
+
+\newenvironment{answer}[1][Solución]{\begin{proof}[#1]\let\qed\relax}{\end{proof}}
 
 
 
