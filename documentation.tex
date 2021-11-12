@@ -9,12 +9,14 @@
 \usepackage{geometry}
 
 % MACROS -----------------------------------------------------------------------
-\RequirePackage{packages/qx-tools}
+\usepackage{packages/qx-tools}
 
 % FUENTE -----------------------------------------------------------------------
 \usepackage{newtxtext, newtxmath}
 \usepackage[T1]{fontenc}
 
+% HIPERVÍNCULOS ----------------------------------------------------------------
+\usepackage{hyperref}
 
 
 % OTROS ------------------------------------------------------------------------
@@ -29,11 +31,144 @@
 \maketitle
 
 \begin{abstract}
-  El paquete \textsf{qx-tools} es un conjunto de macros hecho para facilitar la escritura de un documento matemático. Este se divide en tres paquetes más pequeños. El primer paquete es \textsf{qx-boxes} que define algunas cajas creadas usando \textsf{tcolorbox}. El segundo paquete es \textsf{qx-math} que define múltiples macros matemáticos. Y el último paquete es \textsf{qx-delimiters} que define algunos macros que involucran delimitadores matemáticos. Cada paquete puede ser cargado de manera individual, mientras que el paquete \textsf{qx-tools} carga los tres a la vez.
+  El paquete \textsf{qx-tools} es un conjunto de macros hecho para facilitar la escritura de una actividad de matemáticas. Este se divide en tres paquetes más pequeños. El primer paquete es \textsf{qx-boxes} que define algunas cajas creadas usando \textsf{tcolorbox}\footnote{\url{https://www.ctan.org/pkg/tcolorbox}}. El segundo paquete es \textsf{qx-math} que define múltiples macros matemáticos. Y el último paquete es \textsf{qx-delimiters} que define algunos macros que involucran delimitadores matemáticos. Cada paquete puede ser cargado de manera individual, mientras que el paquete \textsf{qx-tools} carga los tres a la vez.
 \end{abstract}
 
 
 
 
+\section{Uso del paquete}
+
+Existen dos formas de usar el paquete. La primera es descargando el código y modificando el archivo \texttt{plantilla.tex}, este archivo ya tiene el paquete instalado, así como un ejemplo de uso. El nombre del archivo se puede cambiar a gusto. Este archivo ya tiene algunos paquetes instalados que son básicos, como \textsf{babel} o \textsf{geometry}, pueden quitarse o agregarse más a gusto, solo hay que mantener la línea de código \verb|\usepackage{packages/qx-tools}|
+
+La segunda forma es ``importando'' únicamente el paquete. Esto se realiza moviendo la carpeta \texttt{packages} a la misma dirección del archivo principal y simplemente agregar en el preambulo \verb|\usepackage{packages/qx-tools}|.
+
+También se puede agregar individualmente cada uno de los paquetes que conforman \textsf{qx-tools}, esto se hace cambiando el comando \verb|\usepackage{packages/qx-tools}| con el nombre del paquete que se desea agregar. Por ejemplo, si solo se quiere el paquete \textsf{qx-delimiters} entonces se agrega \verb|\usepackage{packages/qx-delimiters}| al preámbulo.
+
+
+\section{Paquete \textsf{qx-boxes}}
+
+Este paquete únicamente contiene definiciones de algunas cajas y entornos que pueden ser usados para la redacción de una actividad de matemáticas. A continuación se presentarán todos los tipos de cajas que están definidos en el paquete.
+
+
+%=========
+\paragraph{Caja de ejercicios.} \verb|\begin{exercise} ... \end{exercise}|
+
+\begin{exercise}
+  Esta caja está pensada para contener ejercicios. Es una caja simple definida con el paquete \textsf{tcolorbox}.
+\end{exercise}
+
+
+\begin{exercise}
+  Cada caja está autonumerada, como si fuera un entorno de teorema creado con \verb|\newtheorem|.
+\end{exercise}
+
+
+\begin{exercise}[$n$-ésimo]
+  En el caso de que se quiera una numeración irregular o especial, es posible cambiala manualmente. Basta con simplemente colocar un argumento opcional, por ejemplo, esta caja fue escrita como
+    
+  \verb|\begin{exercise}[$n$-ésimo] ... \end{exercise}|  
+\end{exercise}
+
+\begin{exercise}
+  Si se agrega una numeración especial, el contador no cambia. Esto puede ser bueno o malo dependiendo de la situación.
+\end{exercise}
+
+
+\setcounter{qxExercise}{19}
+\renewcommand{\theqxExercise}{---\Roman{qxExercise}---}
+
+\begin{exercise}
+  Otra forma de modificar el número del ejercicio, para los que sepan un poco más de \LaTeX, es modificando el contador \texttt{qxExercise} o el comando \verb|\theqxExercise|. Por ejemplo, estos comandos fueron agregados antes de esta caja
+
+  \verb|\setcounter{qxExercise}{19}|
+
+  \verb|\renewcommand{\theqxExercise}{---\Roman{qxExercise}---}|
+\end{exercise}
+
+\begin{exercise*}
+  La versión ``estrellada'' de la caja omite el título y ofrece una forma de obtener una caja simple sin título.
+
+  \verb|\begin{exercise*} ... \end{exercise*}|
+\end{exercise*}
+
+\begin{exercise*}[Título chido]
+  La versión ``estrellada'' también ofrece una forma de obtener otros títulos, basta con agregar un argumento opcional. Por ejemplo, esta cada fue escrita de la siguiente forma
+
+  \verb|\begin{exercise*}[Título chido] ... \end{exercise*}|
+\end{exercise*}
+
+
+\SetExerciseTitle{Teorema}
+\begin{exercise}
+  Otra forma de cambiar el título es usando el comando \verb|\SetExerciseTitle|, este cambia el título por default de la caja de ejercicios simple. Por ejemplo, el siguiente comando fue agregado antes de esta caja
+
+  \verb|\SetExerciseTitle{Teorema}|
+\end{exercise}
+
+
+%=========
+\paragraph{Cada de definición.} \verb|\begin{definition} ... \end{definition}|
+
+\begin{definition}[Opcional]
+  Esta caja está hecha especialmente para definiciones. Funciona igual que un entorno creado con \verb|\newtheorem|, por lo que se puede agregar un texto al lado de la numeración. En específico, esta caja fue creada con el siguiente comando
+
+  \verb|\begin{definition}[Opcional] ... \end{definition}|
+\end{definition}
+
+\begin{definition*}[Opcional]
+  Al igual con la caja de teorema, este entorno tiene una versión ``estrellada'' el cul permite una definición pero sin la numeración.
+
+  \verb|\begin{definition*}[Opcional] ... \end{definition*}|
+\end{definition*}
+
+
+%=========
+\paragraph{Entorno de lemma.}  \verb|\begin{lemma} ... \end{lemma}|
+
+\begin{lemma}
+  Para comodidad, ya se han definido el entorno para lemas. Este es un entorno simple definido mediante \verb|\newtheorem|.
+\end{lemma}
+
+\begin{lemma*}
+  La versión ``estrellada'' omite la numeración, como en el entorno de definición.
+\end{lemma*}
+
+
+%=========
+\paragraph{Entorno de solución.} \verb|\begin{answer} ... \end{answer}|
+
+\begin{answer}
+  El paquete tiene definido un entorno de solución. Este es simplemente un entorno \verb|{proof}| de \textsf{amsthm}\footnote{\url{https://www.ctan.org/pkg/amsthm}}, pero que dice ``Solución'' y no tiene el cuadrito de demostración.
+\end{answer}
+
+\begin{answer}[Cambio de título]
+  Al igual que el entorno \verb|{proof}| de \textsf{amsthm}, se puede cambiar la palabra simplemente agregando un argumento opcional.
+
+  \verb|\begin{answer}[Cambio de título] ... \end{answer}|
+\end{answer}
+
+\begin{proof}
+  Sobra decir que el entorno \verb|{proof}| de \textsf{amsthm} está cargado por defecto en este paquete.
+\end{proof}
+
+
+%=========
+\paragraph{Cambio de color.} Es posible cambiar el color de las cajas. Para ello basta con modificar los colores \texttt{qx-box-frame} (modifica el color del borde de las cajas) y \texttt{qx-box-back} (modifica el color interior de las cajas) mediante los comandos del paquete \textsf{xcolor}\footnote{\url{https://www.ctan.org/pkg/xcolor}}.
+
+\colorlet{qx-box-frame}{purple!50!black}
+\colorlet{qx-box-back}{yellow!20}
+
+\begin{exercise}
+  Los siguientes comandos fueron agregados antes de esta caja.
+  
+  \verb|\colorlet{qx-box-frame}{purple!50!black}|
+  
+  \verb|\colorlet{qx-box-back}{yellow!20}|
+\end{exercise}
+
+\begin{definition}
+  En el caso de la caja de definición, soo se puede modificar el borde, el cual está enlazado al color del borde de la caja de ejercicio.
+\end{definition}
 
 \end{document}
