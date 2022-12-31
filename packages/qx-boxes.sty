@@ -34,41 +34,6 @@
 
 
 
-% CAJAS {exercise} Y {exercise*} -----------------------------------------------
-
-% Contador
-\newcounter{qxExercise}
-
-% Titulo
-\newcommand*{\qxExerciseTitle}{Ejercicio}
-\newcommand*{\SetExerciseTitle}[1]{\renewcommand*{\qxExerciseTitle}{#1}}
-
-% Definición de la caja
-\newtcolorbox{exercise}[1][\refstepcounter{qxExercise}\theqxExercise]{
-  title       = {\qxExerciseTitle\ifx\empty#1\empty.\else\space#1.\fi},
-  colframe    = qx-box-frame,
-  colback     = qx-box-back,
-  fonttitle   = \bfseries,
-  parbox      = false,
-  before skip = \bigskipamount,
-  after skip  = \bigskipamount,
-  breakable
-}
-
-% Caja auxiliar ejercicios
-\newtcolorbox{exercise*}[1][]{
-  title = {#1},
-  colframe    = qx-box-frame,
-  colback     = qx-box-back,
-  fonttitle   = \bfseries,
-  parbox      = false,
-  before skip = \bigskipamount,
-  after skip  = \bigskipamount,
-  breakable
-}
-
-
-
 % CAJAS {definition} Y {definition*} -------------------------------------------
 
 % Contador
@@ -98,36 +63,14 @@
                         }
 }
 
-% Definición de la caja sin numeración
-\newtcolorbox{definition*}[1][\relax]{
-  title       = {Definición\ifx#1\relax.\else\space{\normalfont(#1)}.\fi},
-  coltitle    = black,
-  fonttitle   = \bfseries,
-  colback     = white,
-  colframe    = qx-box-frame,
-  parbox      = false,
-  parbox      = false,
-  top         = 1.5mm+\tcboxedtitleheight/4,
-  before skip = \bigskipamount,
-  after skip  = \bigskipamount,
-  sharp corners,
-  breakable,
-  enhanced,
-  attach boxed title to top left = {yshift = -\tcboxedtitleheight/2, xshift = 4mm-0.5mm},
-  boxed title style = {
-                          colback=white,
-                          left=0.5mm,right=0.5mm,
-                          boxsep=1mm,
-                          frame empty
-                        }
-}
-
 
 
 % ENTORNOS {lema} Y {lema*} ----------------------------------------------------
 
-\newtheorem{lemma}{Lema}
-\newtheorem*{lemma*}{Lema}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
 
 
 
