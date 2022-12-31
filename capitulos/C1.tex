@@ -92,3 +92,51 @@ Por ejemplo, $k[x_1,\ldots,x_n,\ldots]$ no es noetheriano: $x_1, \ldots, x_n$ es
 \begin{proof}
   Suponga que el enunciado es falso y escoja un elemento $a\in A$ que contradiga el enunciado y es tal que $(a)$ es maximal entre los ideales generados por dichos elementos (aquí usamos que $A$ es noetheriano). Ya que $a$ no puede ser escrito como un producto de elementos irreducibles, él mismo no es irreducible y, de este modo, $a = bc$ con $b$ y $c$ no unidades. Claramente $(a) \subseteq (b) $ y los ideales no pueden ser iguales por que de lo contrario $c$ sería unidad. De la maximalidad de $a$, podemos deducir que $b$ puede ser escrito como un producto de elementos irreducibles y similarmente para $c$. Por lo tanto, $a$ es un producto de elementos irreducible (contradicción).
 \end{proof}
+
+
+
+
+\section{Módulos}
+
+Sea $A$ un anillo. Un \emph{$A$-módulo} es un grupo abeliano $M$ junto con una función (multiplicación escalar) de $A\times M \to M$, $(a,x) \mapsto ax$ tal que se satisfacen los siguientes axiomas:
+\begin{align*}
+  a(x+y) &= ax + ay, \\
+  (a+b)x &= ax + bx, \\
+  (ab)x &= a(bx), \\
+  1x &= x,
+\end{align*}
+para todo $a,b \in A$ y todo $x,y \in M$.
+
+La noción de módulo es una generalización de varios conceptos familiares. Por ejemplo, un ideal $I$ de $A$ es un $A$-módulo. Si $A = k$ es un campo, entonces un $A$-módulo es un $k$-espacio vectorial. Un $\Z$ módulo es un grupo abeliano.
+
+Un \emph{submódulo} $N$ de $M$ es un subgrupo de $M$ que es cerrado respecto a la multiplicación por elementos de $A$. El grupo abeliano $M/N$ hereda de $M$ una estructura de $A$-módulo definida por $a(x+N) = ax + N$. El $A$-módulo $M/N$ es el \emph{cociente} de $M$ por $N$.
+
+La mayoría de las operaciones con ideales tienen sus análogas para módulos. Sea $M$ un $A$-módulo y sea $(M_i)_{i\in I}$ una familia de submódulos de $M$. Su \emph{suma} $\sum M_i$ es el conjunto de todas las sumas $\sum x_i$ donde $x_i \in M_i$ donde $x_i \in M_i$ para todo $i \in I$ y donde casi todas las $x_i$ son cero. El \emph{producto} $IM$, donde $I$ es un ideal de $A$ y $M$ un $A$-módulo, es el conjunto de todas las sumas finitas $\sum a_i x_i$ con $a_i \in I$ y $x_i \in M$, es un submódulo de $M$.
+
+Si $x$ es un elemento de $M$, el conjunto de todos los múltiplos $ax$ con $a \in A$ es un submódulo de $M$, llamado el submódulo \emph{cíclico} generado por $x$ y se denota $Ax$ o $(x)$. Si $M = \sum_{i \in I} A x_i$, las $x_i$ se dicen que son un \emph{conjunto de generadores} de $M$. Un $A$-módulo $M$ se dice que es \emph{finitamente generado} si tiene un conjunto finito de generadores.
+
+\begin{definition}
+  Sean $M$ y $N$, $A$-módulos. Una función $f\colon M \to N $ es un homomorfismo de $A$-módulos (o es $A$-lineal) si 
+    \[
+      f(am+bn) = af(m) + bf(n)
+    \]
+  para todo $a,b \in A$ y $m,n \in M$.
+\end{definition}
+
+Tenemos las siguiente definiciones: 
+\begin{itemize}
+  \item Un \emph{endomorfismo} es un homomorfismo de $M$ a $M$.
+  \item Un monomorfismo es un homomorfismo inyectivo.
+  \item Un epimorfismo es un homomorfismo suprayectivo.
+  \item Un isomorfismo es un homomorfismo biyectivo.
+\end{itemize}
+
+Si $f$ es un homomorfismo entonces el núcleo de $f$,
+  \[
+    \ker f = \{m \in M : f(m) = 0\}
+  \]
+y la imagen de $f$,
+  \[
+    \im f = \{f(m) : m \in M\}
+  \]
+son submódulos de $M$ y $N$, respectivamente. Si $A$ es un campo, un homomorfismo de $A$-módulos es una transformación lineal de espacios vectoriales. El conjunto de todos los homomorfismos de $A$-módulos de $M$ a $N$ es también un $A$-módulo con la suma de homomorfismos la suma usual de funciones, $(f+g)(m) = f(m) + g(m)$ y $(af)(m) = af(m)$ para toda $m \in M$. Este $A$-módulo se denota por $\Hom_A(M,N)$.
