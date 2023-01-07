@@ -45,7 +45,7 @@ Si $J$ es un ideal de $B$, entonces $f^{-1}(J)$ es siempre un ideal de $A$, llam
       \item $(I_1 I_2)^\ext = I_1^\ext I_2^\ext$ y $(J_1 J_2)^\cont \supseteq J_1^\cont J_2^\cont$
     \end{enumerate}
 
-  \item Suponga que $f\colon A \to B $ y $g\colon A \to C$ son homomorfismos de anillos y que $h\colon B \to C$ es un isomorfismo que satisface $g = h \circ f$. Muestr que para cualquier ideal $I$ de $A$, $h$ se restringe a un isomorfismo entre $f(I)B$ y $g(I)C$.
+  \item Suponga que $f\colon A \to B $ y $g\colon A \to C$ son homomorfismos de anillos y que $h\colon B \to C$ es un isomorfismo que satisface $g = h \circ f$. Muestra que para cualquier ideal $I$ de $A$, $h$ se restringe a un isomorfismo entre $f(I)B$ y $g(I)C$.
 \end{exerciseList}
 
 
@@ -140,3 +140,128 @@ y la imagen de $f$,
     \im f = \{f(m) : m \in M\}
   \]
 son submódulos de $M$ y $N$, respectivamente. Si $A$ es un campo, un homomorfismo de $A$-módulos es una transformación lineal de espacios vectoriales. El conjunto de todos los homomorfismos de $A$-módulos de $M$ a $N$ es también un $A$-módulo con la suma de homomorfismos la suma usual de funciones, $(f+g)(m) = f(m) + g(m)$ y $(af)(m) = af(m)$ para toda $m \in M$. Este $A$-módulo se denota por $\Hom_A(M,N)$.
+
+Todos los teoremas de isomorfismos se sostienen para $R$-módulos. Las pruebas invocan el teorema correspondiente para grupos y luego se prueba que los homomorfismos de grupos son también homomorfismos de $R$-módulos.
+
+\emph{Primer teorema de isomorfismo}: Sean $M,N$, $A$-módulos y sea $f\colon M \to N$ un homomorfismo de $A$-módulos. Entonces $\ker f$ es un submódulo de $M$ tal que $M/\ker f \cong \im f$.
+
+\emph{Segundo teorema de isomorfismo}: Sean $N,P$ submódulos del $A$-módulo $M$. Entonces $(N+P)/P \cong N/(N \cap P)$.
+
+\emph{Tercer teorema de isomorfismo}: Sea $M$ un $A$-módulo y sean $N$ y $P$ submódulos de $M$ con $N \subseteq P$. Entonces $(M/N)/(P/N) \cong M/P$.
+
+\emph{Teorema de correspondencia}: Sea $N$ un submódulo del $A$-módulo $M$. Existe una biyección entre los submódulos de $M$ que contienen $N$ y los submódulos de $M/N$. La correspondencia es dada por $P \leftrightarrow P/N$, para toda $P \supseteq N$. Esta correspondencia conmuta con el proceso de tomar sumas e intersecciones.
+
+\begin{definition}
+  Un $A$-módulo $M$ es \emph{noetheriano} si cada submódulo de $M$ es finitamente generado.
+\end{definition}
+
+Esto es equivalente a la condición de que $M$ satisface la condición de que $M$ satisface la condición de cadena ascendente sobre submódulos o que cualquier colección no vacía de submódulos de $M$ tiene un elemento maximal.
+
+La importancia de los módulos noetherianos viene de la observación siguiente:
+
+\begin{theorem}[de la base de Hilbert para módulos]
+  Si $A$ es un anillo noetheriano y $M$ es un $A$-módulo finitamente generado, entonces $M$ es noetheriano.
+\end{theorem}
+\begin{proof}
+  Suponga que $M$ es generado por $f_1, \ldots, f_t$ y sea $N$ un submódulo. Mostramos que $N$ es finitamente generado por inducción sobre $t$.
+
+  Si $t = 1$, entonces el homomorfismo $A \to M$ mandando $1$ a $f_1$ es suprayectivo. La preimagen de $N$ es un ideal que es finitamente generado ya que $A$ es noetheriano. Las imágenes de sus generadores generan $N$.
+
+  Ahora suponga que $t>1$. La imagen de $N$, $\overline N$, en $M/Af_1$ es finitamente generada por inducción. Sean $g_1,\ldots,g_s$ elementos de $N$ cuyas imágenes generan $\overline N$. Ya que $Af_1 \subseteq M$ es generado por un elemento, su submódulo $N \cap Af_1$ es finitamente generado, digamos por $h_1,\ldots,h_r$.
+
+  Mostraremos que los elementos $h_1,\ldots,h_r$ y $g_1,\ldots,g_s$ juntos generan $N$. Dado $n \in N$, la imagen de $n$ en $\overline N$ es una combinación lineal de las imágenes de las $g_i$; restando las combinaciones lineales correspondientes de las $g_i$ de $N$, obtenemos un elemento de $N \cap Af_1$, que es una combinación lineal de las $h_i$ por hipótesis. Esto muestra que $n$ es una combinación lineal de las $g_i$ y $h_i$.
+\end{proof}
+
+\begin{lemma}[Nakayama]
+  Sea $A$ un anillo local y sea $I$ un ideal propio de $A$. Sea $M$ un $A$-módulo finitamente generado.
+  \begin{enumerate}
+    \item Si $IM = M$, entonces $M = 0$.
+    \item Si $N$ es un submódulo de $M$ tal que $N+IM = M$, entonces $N = M$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  $(a)$ Suponga que $M \neq 0$. Entre todos los conjuntos posibles de generadores para $M$, escoja uno $\{m_1,\ldots,m_k\}$ tomando el menor número posible de elementos. Por hipótesis podemos escribir
+  \[
+    m_k = a_1 m_1 + a_2 m_2 + \cdots + a_k m_k
+      \quad\text{para ciertos}\quad a_i \in I.
+  \]
+  Entonces
+  \[
+    (1-a_k)m_k = a_1 m_1 + a_2 m_2 + \cdots + a_{k-1} m_{k-1}.
+  \]
+  Si $J$ es el ideal maximal de $A$, $I \subseteq J$ y $1-a_k \notin J$. De aquí, $1-a_k$ es una unidad y por lo tanto $\{m_1,\ldots,m_{k-1}\}$ genera $M$. Esto contradice nuestra selección de $\{m_1,\ldots,m_k\}$ y por lo tanto $M = 0$.
+
+  (b) Mostraremos que $I(M/N) = M/N$ y entonces, aplicando la primera parte del lema, concluimos que $M/N = 0$. Considere $m+N$, $m \in M$. Por hipótesis, podemos escribir
+  \[
+    m + n + \sum a_i m_i,
+      \qquad \text{con}\ a_i \in I,
+      \qquad \text{con}\ m_i \in M.
+  \]
+  Por consiguiente,
+  \[
+    m+N = \sum a_i m_i + N = \sum a_i (m_i + N),
+  \]
+  de donde $m + N \in I(M/N)$.
+\end{proof}
+
+En el lema, la hipótesis de que $M$ sea finitamente generado es crucial. Por ejemplo, sea
+\[
+  \Z_{(5)} = \{q \in \Q : q = a/b \ \text{con}\ a,b \in \Z, 5 \nmid b\}.
+\]
+Entonces $q = a/b$ es una unidad de $\Z_{(5)}$ si y solo si $5 \nmid a$. Por lo tanto, las no unidades de $\Z_{(5)}$ son
+\[
+  \{ a/b \in \Z_{(5)} : 5 \mid a \} = 5\Z_{(5)}.
+\]
+
+Este es un ideal, así que $\Z_{(5)}$ es un anillo local con ideal maximal $5\Z_{(5)}$. Considere $\Q$ como un $\Z_{(5)}$-módulo. Entonces $\Q = 5\Z_{(5)}\Q$, pero $\Q \neq 0$. El punto es que $\Q$ no es finitamente generado sobre $\Z_{(5)}$,
+\[
+  \Q = \Z_{(5)} + \Z_{(5)} \frac{1}{5} + \Z_{(5)}\frac{1}{5^2} + \cdots .
+\]
+
+
+
+
+\section{Sucesiones exactas}
+
+Decimos que una sucesión de $A$-módulos y $A$-homomorfismos
+\begin{equation} \label{eq:1.1}
+  \cdots \to M_{i-1}
+    \labto{f_i} M_i 
+    \labto{f_{i+1}} M_{i+1}
+    \to \cdots  
+\end{equation}
+es \emph{exacta} en $M_i$ si $\im f_i = \ker f_{i+1}$. La sucesión es \emph{exacta} si es exacta en cada $M_i$. En particular:
+\begin{enumerate}
+  \item $0 \to M' \labto{f} M $ es exacta si y solo si $f$ es inyectiva.
+  \item $M \labto{g} M'' \to 0$ es exacta si y solo si $g$ es suprayectiva.
+  \item $0 \to M' \labto{f} M \labto{g} M'' \to 0$ es exacta si y solo si $f$ es inyectiva, $g$ es suprayectiva y $g$ induce un isomorfismo de $\coker f = M / \im f$ sobre $M''$.
+\end{enumerate}
+
+Una sucesión del tipo $(c)$ es llamada una \emph{sucesión exacta corta}- Cualquier sucesión exacta larga \eqref{eq:1.1} se puede dividir en sucesiones exactas cortas: si $N_i = \im f_i = \ker f_{i+1}$, tenemos para cada $i$ sucesiones exactas cortas $0 \to N_i \to M_i \to N_{i+1} \to 0$.
+
+\begin{lemma}[de la serpiente] \label{prop:1.5.1}
+  Sea 
+  \[
+    \begin{tikzcd}
+      0 \arrow[r] & M' \arrow[r, "f"] \arrow[d, "h'"] & M \arrow[r, "g"] \arrow[d, "h"] & M'' \arrow[r] \arrow[d, "h''"] & 0 \\
+      0 \arrow[r] & N' \arrow[r, "f'"']               & N \arrow[r, "g'"']              & N'' \arrow[r]                  & 0
+    \end{tikzcd}
+  \]
+  un diagrama conmutativo de $A$-módulos y homomorfismos, con los renglones exactos. Entonces existe una sucesión exacta
+  \begin{equation}\label{eq:1.5}
+    0 \to \ker h' \labto{\bar f} \ker h \labto{\bar g} \ker h'' \labto{\delta} 
+      \coker h' \labto{\bar f'} \coker h \labto{\bar g'} \coker h'' \to 0.
+  \end{equation}
+  en la que $\bar f$, $\bar g$ son restricciones de $f$, $g$ y $\bar f'$, $\bar g'$ son inducidas por $\bar f'$, $\bar g'$ son inducidas por $f'$, $g'$. \qed
+\end{lemma}
+
+El \emph{homomorfismo frontera $\delta$} se define como sigue: si $x'' \in \ker h''$, tenemos que $x'' = g(x)$ para algún $x \in M$ y $g'(h(x)) = h''(g(x)) = 0$, de aquí $h(x) \in \ker g' = \im f'$, así que $h(x) = f'(y')$ para algún $y' \in N'$. Entonces $\delta(x'')$ se define como la imagen de $y'$ en el $\coker h'$. La verificación de que $\delta$ está bien definido y de que la sucesión \eqref{eq:1.5} es exacta es un ejercicio directo en persecución de elementos en el diagrama, que dejamos al lector.
+
+
+
+\ExerciseSection
+
+\begin{exerciseList}
+  \item Sea $0 \to M' \labto{f} M \labto{g} M'' \to 0$ una sucesión exacta de $A$-módulos. Muestre que $M$ es noetheriano si y solo si $M'$ y $M''$ son noetherianos.
+  \item Pruebe en detalle la proposición \ref{prop:1.5.1}.
+\end{exerciseList}
