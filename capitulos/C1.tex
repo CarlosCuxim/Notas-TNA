@@ -534,7 +534,7 @@ La dimensión está bien definida por el teorema siguiente.
   Aplicando definición y simplificando tenemos que $\sum a_j b_j = \sum c_i b_i$ para algunos $c_i \in I$. Igualando los coeficientes de los $b_j$ obtenemos que $a_j \in I$. De este modo $\abs{B} = \dim (M/IM)$ es independiente de la base $B$ escogida.
 \end{proof}
 
-\begin{definition}[Hola]\label{def:1.7.13}%
+\begin{definition}\label{def:1.7.13}%
   Para cualquier dominio entero $A$ el \emph{rango} de un $A$-módulo $M$ es el número máximo de elementos $A$-linealmente independientes de $M$.
 \end{definition}
 
@@ -572,4 +572,59 @@ Sea $A$ un dominio entero y $M$ un módulo libre de dimensión $n$. Entonces, po
   \]
 
   Notemos que $a_1 y_1 = \sum_{i=1}^n a_1 b_i x_i = \sum_{i=1}^n \pi_i (y) x_i = y$. Ya que $a_1 = \nu(y) = \nu(a_1 y_1) = a_1 \nu(y_1)$ y $a_1 \neq 0$, $\nu(y_1) = 1$.
+
+  Ahora verificamos que este elemento $y_1$ puede ser tomado como un elemento en una base para $M$ y que $a_1 y_1$ puede ser tomado como un elemento en una base para $M$ y que $a_1 y_1$ puede ser tomado como un elemento en una base para $N$, a saber, que tenemos que
+  \begin{enumerate}[label=\arabic*.]
+    \item $M = Ay_1 \oplus \ker \nu$,
+    \item $N = Aa_1y_1 \oplus (N \cap \ker \nu)$.
+  \end{enumerate}
+  Para ver 1, sea $x$ un elemento arbitrario en $M$ y escriba $x = \nu(x)y_1 + (x-\nu(x)y_1)$. Ya que
+  \begin{align*}
+    \nu(x-\nu(x)y_1) &= \nu(x) - \nu(x)\nu(y_1), \\
+      &= \nu(x) - \nu(x)\cdot 1, \\
+      &= 0,
+  \end{align*}
+  vemos que $x - \nu(x)y_1$ es un elemento del núcleo del $\nu$. Esto muestra que $x$ puede ser escrito como la suma de un elemento en $Ay_1$ y un elemento en el núcleo de $\nu$, así que $M = Ay_1 + \ker \nu$.
+
+  Suponga que ahora que $ry_1$ es también un elemento en el núcleo de $\nu$. Entonces $0 = \nu(ry_1) = r\nu(y_1) = r$ que muestra que este elemento es $0$.
+
+  Para 2, observe que $\nu(x')$ es divisible por $a_1$ para cada $x' \in \N$ por la definición de $a_1$ como un generador de $\nu(N)$. Si escribimos $\nu(x') = ba_1$ donde $b \in A$ entonces
+  \begin{align*}
+    x &= \nu(x')y_1 + (x' - \nu(x')y_1) \\
+      &= ba_1y_1 + (x' - ba_1y_1)
+  \end{align*}
+  donde el segundo sumando está en el núcleo de $\nu$ y es un elemento de $N$. Esto muestra que $N = Aa_1y_1 + (N \cap \ker \nu)$. El hecho de que la suma en 2 es directa es un caso especial de la suma directa en 1.
+
+  Probamos $a)$ por inducción sobre $m$. Si $m=0$, entonces 
+  \[
+    \Tor(N) = \{x \in N : rx = 0 \ \text{para algún}\ r \neq 0 \in A\}
+  \]
+  es un submódulo de $N$ (llamado el \emph{submódulo de torsión} de $N$) que es igual a $N$. Ya que $M$ es libre, $\Tor(M) = 0$ y de aquí $N=0$. Así que $N$ es libre de dimensión $0$.
+
+  Supongamos entonces que $m>0$. Ya que la suma en 2 es directa vemos que el número máximo de elementos de $N \cap \ker \nu$ que son linealmente independientes es $(m-1)$ (ejercicio 4). Por inducción, $N \cap \nu$ es libre de dimensión $m-1$. De nuevo, ya que la suma en 2 es directa vemos que adjuntado $a_1 y_1$ a cualquier base de $N \cap \ker \nu$  da una base de $N$, así que $N$ es libre de dimensión $m$, lo que prueba $a)$.
+
+  Finalmente, probamos $b)$ por inducción sobre $n$, la dimensión de $M$. Aplicando $a)$ al submódulo $\ker\nu$ vemos que este submódulo es libre y porque la suma en 1 es directa es libre de dimensión $n-1$. Por inducción, existe una base $y_1, y_3,\ldots,y_n$ de $\ker \nu$ tal que $a_2y_2,a_3y_3\ldots,a_my_m$ es una base de $N \cap \ker \nu$ para algunos $a_2,a_3,\ldots,a_m$ de $A$ con $a_2 \mid a_3 \mid \cdots \mid a_m$. Ya que las sumas en 1 y 2 son directas, $y_1,\ldots,y_n$ es una base de $M$ y $a_1y_1,\ldots,a_my_m$ es una base de $N$. Sólo resta probar que $a_1 \mid a_2$.
+
+  Defina un homomorfismo $\varphi$ de $M$ a $A$ definiendo $\varphi(y_1) = \varphi(y_2) = 1$ y $\varphi(y_i) = 0$ para toda $i>0$ sobre la base de $M$. Entonces para este homomorfismo $\varphi$ tenemos que $a_1 = \varphi(a_1y_1)$ así que $a_1 \in \varphi(N)$ y de aquí, $(a_1) \subseteq \varphi(N)$. Por la maximalidad de $(a_1)$ en $\Sigma$ se sigue que $(a_1) = \varphi(N)$. Ya que $a_2 = \varphi(a_2y_2) \in \varphi(N)$, $a_2 \in (a_1)$, i.e., $a_1 \mid a_2$.
 \end{proof}
+
+
+
+\ExerciseSection
+
+\begin{exerciseList}
+  \item Pruebe el teorema 1.7.5.
+  
+  \item Sea $M$ un módulo sobre el dominio entero $A$.
+    \begin{enumerate}
+      \item Suponga que $x$ es un elemento de torsión de $M$ distinto de cero. Muestre que $x$ y $0$ son ``linealmente dependientes''. Concluya que el rango de $\Tor(M) = \{x \in M : rx = 0 \ \text{para algún}\ r \neq 0 \in A\}$ es cero, así que en particular cualquier $A$-módulo de torsión, i.e., cualquier $A$-módulo $M$ con $\Tor(M) = M$ tiene rango $0$.
+      \item Muestre que el rango de $M$ es el mismo que el rango del módulo cociente (libre de torsión) $M/\Tor(M)$.
+    \end{enumerate}
+    
+    \item Sea $M$ un módulo sobre el dominio entero $A$.
+    \begin{enumerate}
+      \item Suponga que $M$ tiene rango $n$ y que $x_1,x_2,\ldots,x_n$ es un conjunto maximal de elementos linealmente independientes de $M$. Sea $N = Ax_1 + \cdots + Ax_n$ el submódulo generado por $x_1,x_2,\ldots,x_n$. Pruebe que $N$ es isomorfo a $A^n$ y que el cociente $M/N$ es un $A$-módulo de torsión (equivalentemente, los elementos $x_1,x_2,\ldots,x_n$ son linealmente independientes y para cualquier $y \in M$ existe un elemento $r \neq 0 \in A$ tal que $ry$ puede ser escrito como una combinación lineal $r_1x_1 + \cdots + r_nx_n$ de los $x_i$).
+      \item Recíprocamente, pruebe que si $M$ contiene un submódulo $N$ que es libre de rango $n$ (i.e., $N \cong A^n$) tal que el cociente $M/N$ es un $A$-módulo de torsión entonces $M$ tiene rango $n$. (Sean $y_1,y_2,\ldots,y_{n+1}$, $n+1$ elementos cualesquiera de $M$. Use el hecho de que $M/N$ es de torsión para escribir $r_iy_i$ como una combinación lineal de una base para $N$ para algunos elementos de $A$ distintos de cero $r_1,\cdots,r_{n+1}$. Muestre que los $r_iy_i$ son linealmente dependientes y de aquí, también los $y_i$).
+      \item Sea $A$ un dominio entero y sean $M$ y $N$, $A$-módulos de rangos $m$ y $n$, respectivamente. Pruebe que el rango de $M \oplus N$ es $m+n$. (Use el ejercicio anterior).
+    \end{enumerate}
+\end{exerciseList}
