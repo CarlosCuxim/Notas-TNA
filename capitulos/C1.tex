@@ -224,7 +224,7 @@ Este es un ideal, así que $\Z_{(5)}$ es un anillo local con ideal maximal $5\Z_
 \section{Sucesiones exactas}
 
 Decimos que una sucesión de $A$-módulos y $A$-homomorfismos
-\begin{equation} \label{eq:1.1}
+\begin{equation}\label{eq:1.1}%
   \cdots \to M_{i-1}
     \labto{f_i} M_i 
     \labto{f_{i+1}} M_{i+1}
@@ -239,7 +239,7 @@ es \emph{exacta} en $M_i$ si $\im f_i = \ker f_{i+1}$. La sucesión es \emph{exa
 
 Una sucesión del tipo $(c)$ es llamada una \emph{sucesión exacta corta}- Cualquier sucesión exacta larga \eqref{eq:1.1} se puede dividir en sucesiones exactas cortas: si $N_i = \im f_i = \ker f_{i+1}$, tenemos para cada $i$ sucesiones exactas cortas $0 \to N_i \to M_i \to N_{i+1} \to 0$.
 
-\begin{lemma}[de la serpiente] \label{prop:1.5.1}
+\begin{lemma}[de la serpiente]\label{prop:1.5.1}%
   Sea 
   \[
     \begin{tikzcd}
@@ -248,7 +248,7 @@ Una sucesión del tipo $(c)$ es llamada una \emph{sucesión exacta corta}- Cualq
     \end{tikzcd}
   \]
   un diagrama conmutativo de $A$-módulos y homomorfismos, con los renglones exactos. Entonces existe una sucesión exacta
-  \begin{equation}\label{eq:1.5}
+  \begin{equation}\label{eq:1.5}%
     0 \to \ker h' \labto{\bar f} \ker h \labto{\bar g} \ker h'' \labto{\delta} 
       \coker h' \labto{\bar f'} \coker h \labto{\bar g'} \coker h'' \to 0.
   \end{equation}
@@ -265,3 +265,311 @@ El \emph{homomorfismo frontera $\delta$} se define como sigue: si $x'' \in \ker 
   \item Sea $0 \to M' \labto{f} M \labto{g} M'' \to 0$ una sucesión exacta de $A$-módulos. Muestre que $M$ es noetheriano si y solo si $M'$ y $M''$ son noetherianos.
   \item Pruebe en detalle la proposición \ref{prop:1.5.1}.
 \end{exerciseList}
+
+
+
+
+\section{Anillo de fracciones}
+
+See $A$ un dominio entero; existe un campo $K \supset A$, llamado el \emph{campo de fracciones} de $A$ con la propiedad de que cada $c \in K$ puede ser escrita en la forma $c = ab^{-1}$, $a, b \in A$, $b \neq 0$. Por ejemplo, $\Q$ es el campo de fracciones de $\Z$ y $k(x)$ es el campo de fracciones de $k[x]$.
+
+Sea $A$ un dominio entero con campo de fracciones $K$. Un subconjunto $S$ de $A$ se llama \emph{multiplicativo} si $0 \notin S$, $1 \in S$ y $S$ es cerrado bajo la multiplicación. Si $S$ es un subconjunto multiplicativo, entonces Definimos
+\[
+  S^{-1}A = \set{\frac{a}{b} : b \in S}.
+\]
+Obviamente es un subanillo de $K$, llamado el \emph{anillo de fracciones de $A$ con respecto a $S$}. Tenemos también un homomorfismo inyectivo de anillos $f\colon A \to S^{-1}A$ definido por $f(x) = x/1$, que tiene la siguiente propiedad universal.
+
+\begin{proposition}
+  Sea $g\colon A \to B$ un homomorfismo de anillos tal que $g(s)$ es una unidad en $B$ para todo $s \in S$. Entonces existe un único homomorfismo $h\colon S^{-1}A \to B$ tal que $g = h \circ f$.
+\end{proposition}
+\begin{proof}
+  Unicidad. Si $h$ satisface las condiciones, entonces $h(a/1) = h(f(a)) = g(a)$ para todo $a \in A$; de aquí, si $s \in S$, 
+  \[
+    h\paren{\frac{1}{s}} = h\paren{\paren{\frac{s}{1}}^{-1}} =  h\paren{\frac{s}{1}}^{-1} = g(s)^{-1}
+  \]
+  y por lo tanto $h(a/s) = h(a/1) h(1/s) = g(a)g(s)^{-1}$, así que $h$ está determinado de manera única por $g$.
+
+  Existencia. Sea $h(a/s) = g(a)g(s)^{-1}$. Entonces si $h$ está bien definido será claramente un homomorfismo de anillos. Suponga que $a/s = a'/s'$; entonces $as' = a's$ y de aquí
+  \[
+    g(a)g(s') = g(a')g(s);
+  \]
+  ahora $g(s)$ y $g(s')$ son unidades en $B$ y por lo tanto $g(a)g(s)^{-1} = g(a')g(s')^{-1}$.
+\end{proof}
+
+\begin{example}~
+\begin{enumerate}
+  \item Sea $t$ un elemento distinto de cero de $A$; entonces
+    \[
+      S_t = \{1,t,t^2,\ldots\}
+    \]
+  es un subconjunto multiplicativo de $A$ y escribimos (algunas veces) $A_t$ en lugar de $S^{-1}A$. Por ejemplo si $d$ es un entero distinto de cero,
+  \[
+    \Z_d = \set{ \frac{a}{d^{n}} \in \Q : a \in \Z,  n \geq 0 }.
+  \]
+  Consiste de aquellos elementos de $\Q$ cuyo denominador es alguna potencia de $d$.
+
+  \item Si $P$ es un ideal primo, entonces $S_P = A \sm P$ es un conjunto multiplicativo (si ni $a$ ni $b$ pertenecen a $P$, entonces $ab$ no pertenece  a $P$). Escribimos $A_P$ en su lugar $S^{-1}_P A.$ Por ejemplo,
+  \[
+    \Z_{(p)} = \set{\frac{m}{n} \in \Q : n \ \text{no es divisible por}\ p}.
+  \]
+\end{enumerate}
+\end{example}
+
+\begin{proposition}
+  Sea $A$ un dominio entero y sea $S$ un subconjunto multiplicativo de $A$. Si $I$ es un ideal de $A$, entonces $I^{e} = S^{-1} I = S^{-1}A$ si y solo si $I \cap S \neq \emptyset$. La función
+  \[
+    P \mapsto S^{-1}P = \{\frac{a}{s} : a \in P, s \in S\}
+  \]
+  es una biyección del conjunto de ideales primos en $A$ tales que $P \cap S = \emptyset$ al conjunto de ideales primos en $S^{-1}A$; la función inversa es $Q \mapsto Q \cap A$.
+\end{proposition}
+\begin{proof}
+  El ideal extendido $I^e = S^{-1}I$ por que cualquier $y \in I^e$ es de la forma $\sum a_i/s_i$, donde $a_i \in I$ y $s_i \in S$; lleve esta fracción a un denominador común. La afirmación $S^{-1} I = S^{-1}A$ si y solo si $I \cap S = \emptyset$ es trivial. Es fácil ver que si:
+  \begin{itemize}
+    \item $P$ es un ideal primo disjunto de $S$ implica que $S^{-1}P$ es un ideal primo.
+    \item $Q$ es un ideal primo en $S^{-1}A$ implica que $Q \cap A$ es un ideal primo disjunto de $S$.
+  \end{itemize}
+
+  Por lo tanto lo único que tenemos que mostrar es que las dos funciones son inversas, i.e., 
+  \[
+    (S^{-1}P) \cap A = P
+      \Eqand
+    S^{-1}(Q \cap A) = Q.
+  \]
+
+  Para la primera igualdad. Claramente $(S^{-1}P) \cap A \supseteq P$. Para la otra inclusión, sea $a/s \in (S^{-1}P) \cap A$, $a\in P$, $s \in S$. Considere la ecuación $(a/s)s = a \in P$. Ya que ambos $a/s$ y $s$ están en $A$, entonces $a/s$ o $s$ está en $P$ (por que es primo); pero $s \notin P$ por hipótesis y por lo tanto $a/s \in P$.
+
+  Para la segunda igualdad. Claramente $S^A{-1}(Q \cap A) \subseteq Q$ por que $Q \cap A .\subseteq Q$ y $Q$ es un ideal en $S^{-1}A$. Para la otra inclusión, sea $b \in Q$. Podemos escribirlo como $b = a/s$ con $a \in A$, $s \in S$. Entonces $a = s(a/s) \in Q \cap A$ y por lo tanto $a/s \in S^{-1}(Q \cap A)$.
+\end{proof}
+
+\begin{example}
+  Si $P$ es un ideal primo de $A$, $A_P$ es un anillo local (por que $P$ contiene cada ideal primo disjunto de $S_P$). Listamos los ideales primos de algunos anillos:
+  \begin{itemize}
+    \item $\Z$: $(2)$, $(3)$, $(5)$, $(7)$, $(11)$, \dots, $(0)$;
+    \item $\Z_2$: $(3)$, $(5)$, $(7)$, $(11)$, \dots, $(0)$;
+    \item $\Z_(2)$: $(2)$, $(0)$;
+    \item $\Z_{42}$: $(5)$, $(11)$, $(13)$, \dots, $(0)$;
+    \item $\Z/(42)$: $(2)$, $(3)$, $(7)$.
+  \end{itemize}
+
+  Note que en general, si $t$ es un elemento distinto de cero de un dominio entero, 
+  \begin{itemize}
+    \item $\{\text{ideales primos de $A_t$}\} \leftrightarrow \{\text{ideales primos de $A$ que no contienen a $t$}\}$,
+    \item  $\{\text{ideales primos de $A/(t)$}\} \leftrightarrow \{\text{ideales primos de $A$ que contienen a $t$}\}$.
+  \end{itemize}
+\end{example}
+
+
+
+
+\section{Módulos libres}
+
+El concepto de independencia lineal se extiende a los módulos.
+
+\begin{definition}
+  Un subconjunto $S$ de un módulo $M$ es \emph{linealmente independiente} si para cualesquiera $v_1,\ldots,v_n \in S$,
+    \[
+      a_1 v_1 + a_2 v_2 + \cdots + a_n v_n = 0 \implies a_1 = a_2 = \cdots = a_n = 0.
+    \]
+  Si un conjunto $S$ no es linealmente independiente, decimos que es \emph{linealmente dependiente}.
+\end{definition}
+
+En un espacio vectorial, el conjunto $S = \{v\}$, consistiendo de un solo vector $v$ distinto de cero, es linealmente independiente. Sin embargo, en un módulo, esto no es necesariamente cierto.
+
+\begin{example}
+  El grupo abeliano $\Z/(n) = \{0,1,\ldots,n-1\}$ es un $\Z$-módulo; sin embargo, ya que $na = 0$ para todo $a \in \Z/(n)$, ningún conjunto unitario $\{a\}$ es linealmente independiente.
+\end{example}
+
+También, en un espacio vectorial, un conjunto $S$ de vectores es linealmente dependiente si y solo si algún vector en $S$ es una combinación lineal de los otros vectores en $S$. Para módulos arbitrarios, esto no es verdad. El problema es que
+\[
+  a_1v_1 + a_2v_2 + \cdots + a_nv_n = 0
+\]
+y digamos, $a_1 \neq 0$ implica que 
+\[
+  a_1v_1 = -a_2v_2 - \cdots - a_nv_n
+\]
+pero en general, no podemos dividir ambos lados por $a_1$.
+
+\begin{definition}
+  Sea $M$ un $A$-módulo. Un subconjunto $B$ de $M$ es una \emph{base} si $B$ es linealmente independiente y genera $M$.
+\end{definition}
+
+\begin{theorem}
+  Un subconjunto $B$ de un módulo $M$ es una base si y solo si, para cada $v \in M$, existe un conjunto único de escalares $a_1,\ldots,a_n$ para los cuales
+  \[
+    v = a_1v_1 + a_2v_2 + \cdots + a_nv_n \tag*{\qed}
+  \]
+\end{theorem}
+
+En un espacio vectorial, un conjunto de vectores es una base si y solo si es un conjunto de generadores mínimo o, equivalentemente, un conjunto linealmente independiente máximo. Para módulos, lo más que se puede hacer es lo siguiente:
+
+\begin{theorem}\label{theo:1.7.5}%
+  Sea $B$ una base para un $A$-módulo $M$. Entonces
+  \begin{enumerate}
+    \item $B$ es un conjunto generador mínimo.
+    \item $B$ es un conjunto linealmente independiente máximo. \qed
+  \end{enumerate}
+\end{theorem}
+
+El $\Z$-módulo $\Z/(n)$ es un ejemplo de un módulo que no tiene base, ya que no tiene conjuntos linealmente independientes, excepto por el conjunto vacío. Sin embargo, ya que todo el módulo es un conjunto generador, un conjunto generador mínimo no necesariamente tiene una base.
+
+Introducimos ahora la suma directa y el producto directo de $A$-módulos. Si $(M_i)_{i \in I}$ es una familia cualquiera de $A$-módulos, se puede definir su \emph{suma directa} $\bigoplus_{i \in I} M_i$; sus elementos son familias $(x_i)_{i \in I}$ tales que $x_i \in M_i$ para cada $i \in I$ y casi todas las $x_i$ son nulas. Si omitimos la restricción del número de $x_i$ no nulas se tiene el \emph{producto directo} $\prod_{i \in I} M_i$. La suma y el producto directo son iguales si el conjunto de índices es finito.
+
+El hecho de que no todos los módulos tienen una base nos condice a la definición siguiente.
+
+\begin{definition}
+  Un $A$-módulo $M$ es \emph{libre} si tiene una base. Si $B$ es una base para $M$, decimos que $M$ es libre sobre $B$.
+\end{definition}
+
+El ejemplo siguiente muestra que aún los módulos libres no son muy parecidos a los espacios vectoriales. Es un ejemplo de un módulo libre que tiene un submódulo que no es libre.
+
+\begin{example}
+  El conjunto $\Z \times \Z$ es un módulo libre sobre sí mismo, con base $\{(1,1)\}$. Para ver esto observe que $(1,1)$ es linealmente independiente, ya que
+  \[
+    (n,m)(1,1) = (0,0) \implies (n,m) = 0.
+  \]
+
+  También, $(1,1)$ genera $\Z \times \Z$ ya que $(n,m) = (n,m)(1,1)$. Pero el submódulo $S = \Z \times \{0\}$ no es libre, ya que no tiene elementos linealmente independientes y de aquí no tiene base. Esto se sigue del hecho de que si $(n,0) \neq (0,0)$, entonces, por ejemplo $(0,1)(n,0) = (0,0)$ y así $\{(n,0)\}$ no es linealmente independiente.
+\end{example}
+
+Una conexión entre módulos libres y sumas directas es dada por la proposición siguiente.
+
+\begin{proposition}~
+  \begin{enumerate}
+    \item Sea $(M_i)_{i \in I}$ una familia de $A$-módulos con $M_i = A$ para toda $i \in I$. Entonces $\bigoplus_{i\in I} M_i$ es un $A$-módulo libre, con (usando $I \neq \emptyset$) base $(e_i)_{i \in I}$, donde para cada $i \in I$, el elemento $e_i \in \bigoplus_{i\in I} M_i$ tiene su componente en $M_i$ igual a $1$ y todos sus otros componentes iguales a cero.
+    
+    \item Sea $M$ un $A$-módulo. Entonces $M$ es libre si y solo si $M$ es isomorfo a un $A$-módulo del tipo descrito en $(a)$. Esto es, si $M$ es isomorfo a una suma directa de copias de $A$.
+    
+    De hecho, si $M$ tiene una base $(e_i)_{i \in I}$, entonces $M \cong \bigoplus_{i\in I} M_i$, donde $M_i = A$ para toda $i \in I$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  $(a)$ es claro. Para la ida de $(b)$. Sea $M$ un $A$-módulo libre con base $\{e_i\}_{i \in I}$. Para cada $i \in I$, sea $M_i =A$ y defina
+    \[
+      f\colon \bigoplus_{i \in I} M_i \to M
+    \]
+    como $f((a_i)_{i\in I}) = \sum_{i\in I} a_i e_i$. Entonce $f$ es un $A$-homomorfismo. Ya que $\{e_i : i \in I\}$ es un conjunto generador de $M$, $f$ es suprayectivo. Como $\{e_i\}_{i\in I}$ es una base, $f$ es inyectivo.
+
+    Para la vuelta de $(b)$. Si $M'$ y $M''$ son $A$-módulos isomorfos, entonces $M'$ es libre si y solo si $M''$ es libre y de aquí, esta parte se sigue de $(a)$.
+\end{proof}
+
+De la misma manera que en la teoría de espacio vectoriales, las bases permiten una descripción fácil de las transformaciones lineales, una base para un $A$-módulo libre $F$ permite una descripción fácil de los $A$-homomorfismos de $F$ a otros $A$-módulos.
+
+\begin{proposition}\label{prop:1.7.9}%
+  Un $A$-módulo $F$ es libre si y solo si existe un conjunto $X$ y una función $i\colon X\to F$ con la propiedad universal siguiente: dado cualquier $A$-módulo $M$ y una función $f\colon X \to M$, existe un único $A$-homomorfismo $\bar f \colon F \to M$ tal que $\bar f \circ i = f$. En otras palabras, $F$ es un objeto libre en la categoría de $A$-módulos.
+\end{proposition}
+\begin{proof}
+  $(\Rightarrow)$ Sea $X = B$ una base de $F$ e $i\colon X \to F$ la inclusión. Suponga que nos dan la función $f \colon X \to M$. Si $u\in F$, entonces $u = \sum_{i=1}^n a_ix_i$, $a_I \in A$, $x_i \in X$, ya que $X$ es una base de $F$. Ya que esta expresión es única, el mapeo $\bar f \colon F \to M$ dado por
+  \[
+    \bar f (u) = \bar f \paren{\sum_{i=1}^n a_ix_i} = \sum_{i=1}^n a_if(x_i)
+  \]
+  está bien definido, $\bar f \circ i = f$ y $\bar f$ es un homomorfismo de $A$-módulos. Ya que $X$ genera $F$, cualquier $A$-homomorfismo está determinado de manera única por su acción sobre $X$. De este modo, si $g \colon F \to M$ es tal que $g\circ i = f$, entonces $g(x) = g(i(x)) = f(x) = \bar f(x)$, de donde $g = \bar f$ y $\bar f$ es único.
+
+  $(\Leftarrow)$ Considere el módulo libre $A^X \coloneqq \bigoplus_{x \in X} M_x$, donde $M_x = A$ para todo $x \in X$. Sea $f\colon X \to A^X$ la función dada por $f(x) = e_x$, donde $e_x$, donde $e_x$ es el vector básico canónico de $A^X$. Entonces, ya que $F$ satisface la propiedad universal, existe un homomorfismo de $A$-módulos $\bar f \colon F \to A^X$ tal que el diagrama siguiente es conmutativo,
+  \[
+    \begin{tikzcd}
+      X \arrow[r, "i"] \arrow[rd, "f"'] & F \arrow[d, "\bar f"] \\
+                                        & A^X                  
+      \end{tikzcd}
+  \]
+i.e., $\bar f \circ i = f$. Sea $Y = \{e_x : x \in X\}$ la base canónica de $A^X$. Ya que $A^X$ es libre, satisface la propiedad universal y por lo tanto dada la función $f \colon Y \to F$, $g(e_x) = i(x)$ existe un $A$\nobreakdash-homomorfismo $\bar g \colon A^X \to F$ tal que el triangulo superior del diagrama siguiente es conmutativo:
+\[
+  \begin{tikzcd}
+                                                    & A^X \arrow[d, "\bar g"] \\
+  Y \arrow[ru, "j"] \arrow[rd, "j"'] \arrow[r, "g"] & F \arrow[d, "\bar f"]   \\
+                                                    & A^X                    
+  \end{tikzcd}
+\]
+donde $j(e_x) = e_x$ es la inclusión de $Y$ en $A^X$. Note que el triángulo inferior también es conmutativo ya que $(\bar f \circ g)(e_x) = (\bar f \circ i)(x) = f(x) = e_x = j(e_x)$. De aquí, el $A$-homomorfismo $\bar f \circ \bar g$ satisface $\bar f \circ \bar g \circ j = \bar f \circ g = j$. Pero el homomorfismo identidad $1_{A^X} \colon A^X \to A^X$ satisface lo mismo, así que por unicidad $\bar f \circ \bar g = 1_{A^X}$. Similarmente $(\bar g \circ \bar f \circ i)(x) = (\bar g \circ f)(x) = \bar g(e_x) = (\bar g \circ j)(e_x) = g(e_x) = i(x)$. De nuevo, por unicidad $\bar g \circ \bar f = 1_F$. Esto muestra que $\bar f$ y $\bar g$ son $A$-isomorfismos y por lo tanto $F$ al ser isomorfismo a un módulo libre es un módulo libre y una base de $F$ es $\bar g(Y) = i(X)$.
+\end{proof}
+
+Si $X$ es cualquier conjunto no vacío, podemos construir un $A$-módulo libre $F$ sobre el conjunto $X$. Sea $F$ el conjunto de expresiones formales $\sum_{x\in X} a_x x$ donde $a_x \in A$ y únicamente un número finito de los $a_x$ son distintos de cero. Entonces si definimos
+\begin{align*}
+  \sum a_x x +  \sum b_x x &= \sum (a_x + b_x) x, \\
+  a \sum a_x x &= \sum (aa_x) x,
+\end{align*}
+$F$ es un $A$-módulo. Si identificamos cada $x \in x$ con la expresión $\sum a_x x \in F$ con $a_x = 1$ y $a_y = 0$ para $y \neq x$, entonces $X$ es una base de $F$.
+
+Un módulo arbitrario es una imagen homomorfa de un módulo libre.
+
+\begin{proposition}
+  Sea $M$ un $A$-módulo. Existe un $A$-módulo libre $F$ y un $A$-epimorfismo $f\colon F \to M$. Si $M$ es finitamente generado por $n$ elementos, entonces podemos escoger $F$ de mono tal que tenga una base de $n$ elementos.
+\end{proposition}
+\begin{proof}
+  Sea $X$ un conjunto que genera $M$ y $F$ un $A$-módulo con base $X$. Defina $f\colon F \to M$ usando la proposición \ref{prop:1.7.9}. Claramente $f$ es suprayectiva.
+\end{proof}
+
+Nuestro siguiente resultado en esta sección introduce el concepto de dimensión de un módulo libre.
+
+\begin{definition}
+  Sea $M$ un $A$-módulo libre. La \emph{dimensión} (o \emph{rango}) de $M$ es la cardinalidad de cualquier base de $M$.
+\end{definition}
+
+La dimensión está bien definida por el teorema siguiente.
+
+\begin{theorem}
+  Sea $M$ un $A$-módulo libre. Entonces dis bases cualesquiera de $M$ tienen la misma cardinalidad.
+\end{theorem}
+\begin{proof}
+  Sea $I$ un ideal maximal de $A$. Entonces $A/I$ es un campo. Entonces $M/IM$ es un espacio vectorial sobre $A/I$ con multiplicación escalar definida como
+  \[
+    (a+I)(m+IM) = am + IM.
+  \]
+
+  Sea $B$ una base para $M$ sobre $A$. Si $b_i$ y $b_j \in B$ entonces $b_i + IM \neq b_j + IM$ por que si
+  \[
+    b_i + IM = b_j + IM
+  \]
+  entonces $b_i-b_j \in IM$ y por lo tanto $b_i - b_j = \sum_{i=1}^n a_i x_i$ con $a_i \in I$ y $x_i \in M$. Pero cada $x_i$ es una combinación lineal de los vectores de la base $B$. Supongamos que el coeficiente de $b_i$ en $x_k$ es $c_k$, $k=1,\ldots,n$. Igualando los coeficientes de ambos lados
+  \[
+    1 = a_1 c_1 + \cdots + a_n c_n.
+  \]
+  Ya que la suma está en $I$, $1 \in I$, lo cual es una contradicción. Entonces
+  \[
+    B' = \{b+IM : b \in B\}
+  \]
+  es una base de $M/IM$ sobre $A/I$. Claramente $B'$ genera $M/IM$ pues $B$ genera $M$. Para ver que son linealmente independientes,
+  \[
+    \sum (a_j + I) (b_j + IM) = 0 \implies \sum (a_jb_j + IM) = 0 \implies \sum a_j b_j \in IM.
+  \]
+  Aplicando definición y simplificando tenemos que $\sum a_j b_j = \sum c_i b_i$ para algunos $c_i \in I$. Igualando los coeficientes de los $b_j$ obtenemos que $a_j \in I$. De este modo $\abs{B} = \dim (M/IM)$ es independiente de la base $B$ escogida.
+\end{proof}
+
+\begin{definition}[Hola]\label{def:1.7.13}%
+  Para cualquier dominio entero $A$ el \emph{rango} de un $A$-módulo $M$ es el número máximo de elementos $A$-linealmente independientes de $M$.
+\end{definition}
+
+Un $A$-módulo de rango $n$ no necesariamente tiene una base, i.e., no es necesariamente un módulo libre.
+
+Sea $A$ un dominio entero y $M$ un módulo libre de dimensión $n$. Entonces, por el teorema \ref{theo:1.7.5}, $n+1$ elementos cualesquiera de $M$ son $A$-linealmente dependientes. De aquí la dimensión de un módulo libre coincide con el rango definido en la definición \ref{def:1.7.13}. También se sigue que el rango de un submódulo de un módulo libre $M$ está acotado por al dimensión de $M$.
+
+\begin{theorem}
+  Sea $M$ un módulo libre de dimensión $n$ sobre un dominio de ideales principales $A$ y $N$ un submódulo de $M$. Entonces
+  \begin{enumerate}
+    \item $N$ es libre de rango $m$, $m \leq n$.
+    \item Existe una base $y_1,\ldots,y_n$ de $M$ tal que $a_1y_1,\ldots,a_m y_n$ es una base de $N$ donde $a_1,\ldots,a_m$ son elementos de $A$ distintos de cero con las relaciones de divisibilidad siguientes
+      \[
+        a_1 \mid a_2 \mid \cdots \mid a_m.
+      \]
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  El teorema es trivial para $N = \{0\}$, así que supongamos que $N \neq \{0\}$. Para cada homomorfismo de $A$-módulos $\varphi$ de $M$ a $A$, la imagen $\varphi(N)$ de $N$ es un submódulo de $A$, i.e., un ideal en $A$. Ya que $A$ es un dominio de ideales principales, este ideal debe ser principal, digamos $\varphi(N) = (a_\varphi)$ para algún $a_\varphi \in A$. Sea
+  \[
+    \Sigma = \{ (a_\varphi) : \varphi \in \Hom_A(M,A) \}.
+  \]
+
+  La colección $\Sigma \neq \emptyset$ pues si $\varphi = 0$, $(0) \in \Sigma$. Ya que $A$ es noetheriano, $\Sigma$ tiene un elemento maximal. Sea $a_1 = \nu(y)$ este elemento maximal.
+
+  Sea $x_1,\ldots,x_n$ una base cualquiera de $M$ y sea $\pi_i \in \Hom_A(M,A)$ la proyección natural en la coordenada $i$-ésima con respecto a esta base. Ya que $N \neq \{0\}$, existe $i$ tal que $\pi_i(N) \neq 0$, que en particular muestra que $\Sigma = \{ (0)\}$.
+
+  Ya que $(a_1)$ es un elemento maximal de $\Sigma$ se sigue que $a_1 \neq 0$.
+
+  Sea $\varphi \in \Hom_A(M,A)$ y $(d) = (a_1, \varphi(y))$, entonces $d$ es un divisor de ambos $a_1$, $\varphi(y)$ en $A$ y $d = r_1 a_1 + r_2 \varphi(y)$ para algunos $r_1, r_2 \in A$. Considere el homomorfismo $\psi = r_1 \nu + r_2 \varphi$ de $M$ a $A$. Entonces $\psi(y) = (r_1 \nu + r_2 \varphi)(y) = r_1a_1 + r_2 \varphi(y) = d$ así que $d \in \psi(N)$, de aquí $(d) \subseteq \psi(N)$. Ya que $d$ divide a $a_1$, $(a_1) \subseteq (d) \subseteq \psi(N)$ y por la maximalidad de $(a_1)$, $(a_1) = (d) = \psi(N)$. En particular, $(a_1) = (d)$ muestra que $a_1 \mid \varphi(y)$ ya que $d \mid \varphi(y)$.
+
+  Aplicando esto a la proyección $\pi_1$ vemos que $a_1$ divide $\pi_i(y)$ para toda $i$. Escriba $\pi_i(y) = a_1 b_i$ para algún $b_i \in A$, $1 \leq i \leq n$ y defina
+  \[
+    y_1 = \sum_{i=1}^n b_i x_i.
+  \]
+
+  Notemos que $a_1 y_1 = \sum_{i=1}^n a_1 b_i x_i = \sum_{i=1}^n \pi_i (y) x_i = y$. Ya que $a_1 = \nu(y) = \nu(a_1 y_1) = a_1 \nu(y_1)$ y $a_1 \neq 0$, $\nu(y_1) = 1$.
+\end{proof}

@@ -33,24 +33,38 @@
 \colorlet{qx-box-back}{blue!5}
 
 
+% AUXILIAR CONTADORES ----------------------------------------------------------
+\newcommand{\resetrefcounter}[1]{\addtocounter{#1}{-1}\refstepcounter{#1}}
 
-% CAJAS {definition} Y {definition*} -------------------------------------------
+
+% ENTORNOS {lema} Y {lema*} ----------------------------------------------------
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Ejemplo}
+
+% CAJAS {definition} -------------------------------------------
 
 % Contador
 \newcounter{qxDefinition}
 
 % Definición de la caja
 \newtcolorbox{definition}[1][\relax]{
-  title       = {\refstepcounter{qxDefinition}Definición \theqxDefinition\ifx#1\relax.\else\space{\normalfont(#1)}.\fi},
-  coltitle    = black,
-  fonttitle   = \bfseries,
-  colback     = white,
-  colframe    = qx-box-frame,
-  parbox      = false,
-  parbox      = false,
-  top         = 1.5mm+\tcboxedtitleheight/4,
-  before skip = \bigskipamount,
-  after skip  = \bigskipamount,
+  title        = {\stepcounter{theorem}Definición \thetheorem\ifx#1\relax.\else\space{\normalfont(#1)}.\fi},
+  before upper = {\resetrefcounter{theorem}},
+  coltitle     = black,
+  fonttitle    = \bfseries,
+  colback      = white,
+  colframe     = qx-box-frame,
+  parbox       = false,
+  parbox       = false,
+  top          = 1.5mm+\tcboxedtitleheight/4,
+  before skip  = \bigskipamount,
+  after skip   = \bigskipamount,
   sharp corners,
   breakable,
   enhanced,
@@ -64,13 +78,23 @@
 }
 
 
+% CAJAS {Example} -------------------------------------------
 
-% ENTORNOS {lema} Y {lema*} ----------------------------------------------------
+\tcolorboxenvironment{example}{
+  colback = white,
+  frame hidden,
+  top = 0mm,
+  bottom = 0mm,
+  boxsep = 0mm,
+  enhanced,
+  borderline west={2mm}{0pt}{qx-box-frame},
+  parbox = false,
+  before skip = \medskipamount,
+  after skip = \medskipamount,
+  breakable
+}
 
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{proposition}[theorem]{Proposición}
-\newtheorem{lemma}[theorem]{Lema}
-\newtheorem{corollary}[theorem]{Corolario}
+
 
 
 
