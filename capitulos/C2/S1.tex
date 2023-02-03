@@ -1,0 +1,140 @@
+\chapter{Extensiones trascendentes}
+
+Estudiaremos extensiones de campos que no son algebraicas.
+
+
+
+\section{Bases de trascendencia}
+
+Veremos que la noción de una base de trascendencia es muy similar a la de una base de un espacio vectorial.
+
+\begin{definition}
+  Sea $K$ un campo extendiendo $F$ y sean $t_1, \ldots, t_n \in K$. El conjunto $\{t_1, \ldots, t_n\}$ es \emph{algebraicamente sobre $F$} si $f(t_1,\ldots,t_n) \neq 0$ para todos los polinomios distintos de cero $f\in F[x_1,\ldots, x_n]$.
+
+  Un conjunto arbitrario $S \subseteq K$ es \emph{algebraicamente independiente sobre $F$} si cualquier subconjunto finito de $S$ es algebraicamente independiente sobre $F$.
+\end{definition}
+
+\begin{example}
+  Si $K=F(x_1, \ldots, x_n)$ es el campo de funciones racionales sobre $F$. Más aún, si $r_1,\ldots, r_n$ son enteros positivos cualesquiera, entonces $\{x_1^{r_1},\ldots, x_n^{r_n}\}$ es también algebraicamente independiente sobre $F$.
+\end{example}
+
+\begin{example}
+  Sea $A=(a_{ij})$ una matriz $n \times n$ con coeficientes en $F$, y sea $f_j= \sum_i a_{ij}x_i$. Probaremos que $\{f_1,\ldots, f_n\}$ es algebraicamente independiente sobre $F$ si y solo si $\det(A)\neq 0$. Por simplicidad, escribimos $F[X]$ por $F[x_1, \ldots, x_n]$. La matriz $A$ induce un homomorfismo de anillos $A'\colon F[X] \to F[X]$ que manda $x_1$ a $f_i$. Si $\det(A)\neq 0$, entonces $A$ tiene una inversa, digamos $A^{-1}=(b_{ij})$ y $A^{-1}$ induce un mapeo inverso $(A^{-1})'\colon F[X]\to F[X]$ a $A'$. Por lo tanto, $A'$ es inyectivo, así que $h(f_1, \ldots, f_n) \neq 0$ para toda $h$ distinta de cero. De este modo, el conjunto $\{f_1, \ldots, f_n\}\neq 0$ es algebraicamente independiente sobre $F$.
+
+  Recíprocamente, suponga que $\det(A)=0$. Entonces las columnas $C_j$ de $A$ son linealmente dependientes sobre $F$; digamos $\sum_j b_j C_j = 0$ con cada $b_j \in F$ y no todas las $b_j$ son cero. Entonces $\sum_j b_j f_j = 0$; de aquí, las $f_j$ son algebraicamente dependientes sobre $F$.
+\end{example}
+
+\begin{example}
+  Por convención, el conjunto vacío $\emptyset$ es algebraicamente independiente sobre cualquier campo. Los conjuntos unitarios $\{e\}$, $\{\pi\}$ y $\{4e^{-1}\}$ son algebraicamente independientes sobre $\Q$. Es desconocido si $\{e, \pi\}$ es algebraicamente independiente sobre $\Q$.
+\end{example}
+
+\begin{example}
+  Sean $F \subseteq K \subseteq L$ campos y sea $S$ un subconjunto de $L$. Si $S$ es algebraicamente independiente sobre $K = F(x) = L$. Entonces $\{x\}$ es algebraicamente independiente sobre $F$, pero $\{x\}$ es algebraicamente independiente sobre $K$.
+\end{example}
+
+Un conjunto de elementos algebraicamente independiente se comporta de la misma manera que un conjuntos de variables de un anillo polinomial. El lema siguiente hace este enunciado preciso.
+
+\begin{lemma}
+  Sea $K$ un campo extendiendo $F$. Si $t_1, \ldots, t_n \in K$ son algebraicamente independientes sobre $F$, entonces $F[t_1, \ldots, t_n]$ y $F[x_1, \ldots, x_n]$ son anillos $F$-isomorfos y por lo tanto $F(t_1,\ldots,t_n)$ y $F(x_1, \ldots, x_n)$ son campos $F$ isomorfos.
+\end{lemma}
+
+\begin{proof}
+  Defina $\varphi\colon F[x_1, \ldots, x_n] \to K$ como $\varphi(f) = f(t_1, \ldots, t_n)$. La independencia algebraica de los $t_i$ muestra que $\varphi$ es inyectivo y la imagen de $\varphi$ es $F[t_1, \ldots, t_n]$. Este mapeo induce un $F$-isomorfismo de los campos de cocientes.
+\end{proof}
+
+\begin{definition}
+  Un campo $K$ es \emph{puramente trascendental} sobre un subcampo $F$ si $K$ es isomorfo a un campo de funciones racionales sobre $F$ en algún número, finito o infinito, de variables.
+\end{definition}
+
+Ahora empezamos a analizar la definición de independencia algebraica.
+
+\begin{lemma}
+  Sea $K$ un campo extendiendo $F$ y sean $t_1, \ldots, t_n \in K$. Entonces los siguientes enunciados son equivalentes:
+  \begin{enumerate}
+    \item El conjunto $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$.
+    \item Para cada $i$, $t_i$ es trascendente sobre $F(t_1,\ldots,t_{i-1}, t_{i+1}, \ldots, t_n)$.
+    \item Para cada $i$, $t_i$ es trascendente sobre $F(t_1, \ldots, t_{i-1})$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  $(a \Rightarrow b)$ Suponga que existe $a_j\in F(t_1, \ldots, t_{i-1}, i_{i+1},\ldots, t_n)$ tales que $a_0 + a_1 t_i + \cdots + a_m t_i^{m} = 0$. Podemos escribir $a_j = b_j/c$ con $b_1, \ldots, b_m, c \in F[t_1, \ldots, t_{i-1}, i_{i+1},\ldots, t_n]$ y por lo tanto $b_0 + b_1 t_i + \cdots + b_m t_i^{m} = 0$. Si $b_j = g_j(t_1, \ldots, t_{i-1}, i_{i+1},\ldots, t_n)$ entonces
+  \[
+    f =  \sum_j g_j (x_1, \ldots, x_{i-1}, x_{i+1},\ldots, t_n) x_i^j 
+  \]
+  es un polinomio y $f(t_1,\ldots, t_n) =0$. Ya que $\{t_1, \ldots,t_n\}$ es algebraicamente independiente sobre $F$, el polinomio $f$ debe ser $0$. Por consiguiente, cada $a_j =0$, así que $t_i$ es trascendente sobre $F(t_1, \ldots, t_{i-1}, i_{i+1},\ldots, t_n)$.
+
+  $(b \Rightarrow c)$ Si $t_i$ es trascendente sobre $F(t_1, \ldots, t_{i-1}, t_{i+1}, \ldots, t_n)$ entonces $t_i$ claramente es trascendente sobre el campo más pequeño $F(t_1, \ldots, t_{i-1})$.
+
+  $(c \Rightarrow a)$ Suponga que los $t_i$ no sin algebraicamente independientes sobre $F$. Escoja $m$ mínima tal que existe $f(x_1, \ldots, x_m) \neq 0 \in F[x_1, \ldots, x_m]$ con $f(t_1, \ldots, t_m)  = 0$. Digamos $f = \sum g_j x_m^j$ con $g_j \in F[x_1, \ldots, x_{m-1}]$ y sea $a_j = g_j (t_1, \ldots, t_{m-1})$. Entonces $a_0 + a_1t_m + \cdots + a_r t_m^r =0$. Si los $a_j$ no son todos cero, entonces $t_m$ es algebraico sobre $F(t_1, \ldots, x_{m-1})$, una contradicción. De este modo, $a_j = 0$ para toda $j$. Esto contradice la minimalidad de $m$. Esto prueba que $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$.
+\end{proof}
+
+
+\begin{definition}
+  Si $K$ es un campo extendiendo $F$, un subconjunto $S$ de $K$ es una \emph{base de trascendencia} para $K/F$ si $S$ es algebraicamente independiente sobre $F$ y si $K$ es algebraico sobre $F(S)$.
+\end{definition}
+
+\begin{example}
+  Si $K/F$ es un extensión de campos, entonces $\emptyset$ es un base de trascendencia para $K/F$ si y solo si $K/F$ es algebraico.
+\end{example}
+
+\begin{example}
+  Si $K = F(x_1, \ldots, x_n)$, entonces $\{x_1, \ldots, x_n\}$ es una base de trascendencia para $K/F$. Más aun, si $r_1, \ldots, r_n$ son enteros positivos, $\{x_1^{r_1}, \ldots, x_n^{r_n}\}$ es también una base de trascendencia ya que $\{x_1^{r_1}, \ldots, x_n^{r_n}\}$ es algebraicamente independiente sobre $F$ y $K$ es algebraico sobre $L = F(x_1^{r_1}, \ldots, x_n^{r_n})$. Esto último es verdadero porque para cada $i$ el elemento $x_i$ satisface el polinomio $t^{r_i} - x_i^{r_i} \in L[t]$.
+\end{example}
+
+\begin{example}
+  Sea $K$ un campo y sea $f(x,y) = y^2 - x^3 + x \in k[x,y]$. Entonces $f$ es un polinomio irreducible, así que $A = k[x,y]/(f)$ es un dominio entero. Note que $A$ contiene una copia isomorfa de $k$.
+
+  Sea $K$ el campo de cocientes de $A$. Podemos ver a $K$ como un campo extendiendo $k$. Si $u = x + (f)$, $v = y + (f)$ son las imágenes de $x,y \in K$, entonces $K = k(u,v)$. Mostramos que $\{u\}$ es una base de trascendencia de $K/k$. Ya que $v^2 = u^3 - u$, el campo $K$ es algebraico sobre $k(u)$. Si $u$ es algebraico sobre $k$, entonces $K$ es algebraico sobre $k$.
+
+  Esto fuerza a $A = k[u,v]$ a ser un campo. Para probar esto, sea $t \in A$. Entonces $t^{-1} \in K$ es algebraico sobre $k$, así que $t^{-1} + \alpha_{n-1}t^{(n-1)} + \cdots + \alpha_0 = 0$ para algunos $\alpha_i \in k$ con $\alpha_0 \neq 0$. Multiplicando por $t_{n-1}$ da
+  \[
+    t^{-1} = -(\alpha_{n-1} + \alpha_{n-2}t + \cdots + \alpha_0 t^{n-1})\in A,
+  \]
+  probando que $A$ es campo. Sin embargo, $A = k[x,y]/(f)$ es un campo si y solo si $(f)$ es un ideal maximal de $k[x,y]$. El anillo $A$ no puede ser un campo, ya que $(f)$ está contenido propiamente en el ideal $(x,y)$ de $k[x,y]$. De este modo, $u$ no es algebraico sobre $k$, así que $\{u\}$ es una base de trascendencia sobre $k$. Un argumento similar muestra que $\{v\}$ es también una base de trascendencia para $K/k$.
+\end{example}
+
+Existe una fuerte conexión entre los conceptos de independencia lineal en espacios vectoriales e independencia lineal en campos.
+
+\begin{lemma}\label{lemma:2.1.12}%
+  Sea $K$ un campo extendiendo $F$ y sea $S \subseteq K$ algebraicamente independiente sobre $F$. Si $t\in K$ es trascendente sobre $F(S)$, entonces $S \cup \{t\}$ es algebraicamente independiente sobre $F$.
+\end{lemma}
+\begin{proof}
+  Suponga que el lema es falso. Entonces existe un polinomio distinto de cero $f \in F[x_1, \ldots, x_n, y]$ con $f(s_1, \ldots, s_n, t) = 0$ para algunos $s_i \in S$. Este polinomio debe involucrar a $y$, ya que $S$ es algebraicamente independiente sobre $F$. Escribiendo $f = \sum_{j=0}^m g_j y^j$ con $g_j \in F[x_1, \ldots, x_n]$, ya que $g_m \neq 0 $, $t$ es algebraico sobre $F(S)$, una contradicción. De este modo, $S \cup \{t\}$ es algebraicamente independiente sobre $F$.
+\end{proof}
+
+Probamos ahora la existencia de una base de trascendencia para cualquier extensión de campos.
+
+\begin{theorem}
+  Sea $K$ un campo extendiendo $F$.
+  \begin{enumerate}
+    \item Existe una base de trascendencia para $K/F$.
+    \item Si $T \subseteq K$ es tal que $K/F(T)$ es algebraico, entonces $T$ contiene una base de trascendencia para $K/F$.
+    \item Si $\subseteq K$ es algebraicamente independiente, entonces $S$ está contenido en una base de trascendencia para $K/F$.
+    \item Si $S \subseteq T \subseteq K$ es tal que $S$ es algebraicamente independiente sobre $F$ y $K/F(T)$ es algebraica, entonces existe una base de trascendencia $X$ para $K/F$ con $S \subseteq X \subseteq T$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Indicamos primero por qué el enunciado $d)$ implica los tres primeros enunciados. Si $d)$ es verdadero, entonces $b)$ y $c)$ son verdaderos tomando $S = \emptyset$ y $T = K$ respectivamente. El primer enunciado se sigue de $d)$ poniendo $S = \emptyset$ y $T = K$.
+
+  Para probar $d)$ sea $\Sp$ el conjunto de todos los subconjuntos algebraicamente independientes de $T$ que contienen a $S$. Entonces $\Sp$ es no vacío ya que contiene a $S$. Ordenando a $\Sp$ por inclusión, el lema de Zorn muestra que $\Sp$ tiene un elemento maximal $M$. Si $K$ no es algebraico sobre $F(M)$, entonces $F(T)$ no es algebraico sobre $F(M)$, ya que $K$ es algebraico sobre $F(T)$. De este modo, existe $t \in T$ con $t$ trascendente sobre $F(M)$. Pero por el lema \ref{lemma:2.1.12}, $M \cup \{t\}$ es algebraicamente independiente sobre $F$ y es un subconjunto de $T$, contradiciendo la maximalidad de $M$. De este modo, $K$ es algebraico sobre $F(M)$, así que $M$ es una base de trascendencia de $K/F$ contenida en $T$.
+\end{proof}
+
+Mostremos ahora que dos bases de trascendencia cualesquiera tienen el mismo tamaño.
+
+\begin{theorem}
+  Sea $K$ un campo extendiendo $F$. Si $S$ y $T$ son bases de trascendencia para $K/F$, entonces $\abs{S} = \abs{T}$.
+\end{theorem}
+\begin{proof}
+  Probamos primero esto en el caso cuando $S = \{s_1, \ldots, s_n\}$ es finito. Ya que $S$ es una base de trascendencia para $K/F$, el campo $K$ no es algebraico sobre $F(S - \{s_1\})$. Como $K$ es algebraico sobre $F(T)$, algún $t \in T$ debe ser trascendente sobre $F(S - \{s_1\})$. De aquí, por el lema \ref{lemma:2.1.12}, $\{s_2, \ldots, s_n, t\}$ es algebraicamente independiente sobre $F$. Además, $s_1$ es algebraico sobre $F(s_2,\ldots s_n, t)$ o de otro modo $\{s_2,\ldots s_n, t\}$ es algebraicamente independiente lo cual es falso. De este modo, $\{s_2, \ldots, s_n, t\}$ es una base de trascendencia para $K/F$. Sin perdida de generalidad podemos suponer que $t_1 = t$.
+
+  Por inducción, asumiendo que hemos encontrado $t_i \in T$ para toda $i$ con $1 \leq i < m \leq n$ tal que $\{t_1, \ldots, t_{m-1}, s_m, \ldots, s_n\}$ es una base de trascendencia para $K/F$, reemplazando $S$ por este conjunto, el argumento de arriba muestra que existe una $t' \in T$ tal que $t_1, \ldots, t_{m-1}, t', \ldots, s_n$ es una base de trascendencia para $K/F$. Poniendo a $t_m = t'$, y continuando de esta manera obtenemos una base de trascendencia $\{t_1, \ldots, t_n\} \subseteq T $ de $K/F$. Ya que $T$ es una base de trascendencia para $K/F$, vemos que $\{t_1, \ldots, t_n\} = T $, así que $\abs{T} = n$.
+
+  Para el caso general, por el argumento previo podemos suponer que ambos $S$ y $T$ son infinitos. Cada $t \in T$ es algebraico sobre $F(S)$, de aquí existe un subconjunto finito $S_t \subseteq S$ con $t$ algebraico sobre $F(S_t)$. Si $S' = \bigcup_{t\in T} S_t$, entonces cada $t$ es algebraico sobre $F(S')$. De este modo, $S = S'$ ya que $S' \subseteq S$ y $S$ es una base de trascendencia para $K/F$. Tenemos entonces
+  \[
+    \abs{S} = \abs{S'} = \biggl| \bigcup_{t \in T} S_t \biggr| \leq \abs{T \times \N} = \abs{T},
+  \]
+  donde la ultima igualdad es verdadera ya que $T$ es infinito. Invirtiendo el argumento, vemos que $\abs{T} \leq \abs{S}$, así que $\abs{S} = \abs{T}$.
+\end{proof}
+
+Este teorema muestra que el tamaño de una base de trascendencia para $K/F$ es única. La definición siguiente es entonces bien definida.
