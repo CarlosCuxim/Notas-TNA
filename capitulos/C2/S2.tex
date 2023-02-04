@@ -1,2 +1,155 @@
 \section{Producto tensorial de espacios vectoriales}
 
+Una propiedad que parece contradictoria, es que, en espacios vectoriales, la dimensión del producto cartesiano de dos espacios vectoriales es la suma de sus dimensiones. Entonces uno podría preguntarse si existe una forma de definir un espacio vectorial, que solo dependa de dos espacios vectoriales, cuya dimensión sea el producto de sus dimensiones.
+
+Ahora, es claro que existe tal espacio vectorial, basta con considerar el conjunto $\Hom_F(U, V)$, es decir, el espacio vectorial dado por las transformaciones $F$-lineales. Por lo que hay que ser más específico. De este modo, como una segunda condición, nos gustaría que este nuevo espacio vectorial sea definido usando una ``multiplicación'' que se comporte bien con las sumas y multiplicación escalar. Bajo estas ideas definiremos el \emph{producto tensorial} de espacios vectoriales.
+
+Lo primero que necesitamos para poder definir el producto tensorial, es el concepto de mapeo bilineal, este formalizará el concepto de ``multiplicación'' en vectoriales que buscamos.
+
+\begin{definition}
+  Sean $U$, $V$ y $W$ espacios vectoriales sobre un campo $F$. Un \emph{mapeo bilineal} de $U \times V$ a $W$ es una función $B\colon U \times V \to W$ tal que
+  \begin{align*}
+    B(\lambda u_1 + \mu u_2, v) &= \lambda B(u_1, v) + \mu B(u_2, v), \\
+    B(u, \lambda v_1 + \mu v_2) &= \lambda B(u, v_1) + \mu B(u, v_2),
+  \end{align*}
+  para todos los escalares $\lambda, \mu\in F$, todos $u, u_1, u_2 \in U$ y todos $v, v_1, v_2 \in V$.
+\end{definition}
+
+Lo que la definición nos dice, en otras palabras, es que las funciones $B_u \colon V \to W$ y $B_v \colon U \to W$ dadas por
+  \[
+    B_u(v) = B(u,v)
+      \Eqand
+    B_v(u) = B(u, v)
+  \]
+son lineales, para todo $u \in U$ y $v \in V$. Esta propiedad usualmente se le presenta como que cada entrada de $B$ es lineal.
+
+Con esta definición, podremos definir el producto tensorial usando una propiedad universal.
+
+\begin{definition}
+  Sean $U$ y $V$ dos $F$-espacios vectoriales. Definimos el \emph{producto tensorial de $U$ y $V$} como un $F$-espacio vectorial $T$ junto con un mapa bilineal $\phi\colon U \times V \to T$ tales que satisfacen la siguiente propiedad universal:
+  \begin{quote}
+    Para cada $F$-espacio vectorial $W$ y cada mapa bilineal $f\colon U \times V \to W$, existe una única trasformación $F$-lineal $\tilde f \colon T \to W$ tal que el siguiente diagrama conmuta.
+      \[
+        \begin{tikzcd}
+          U \times V \arrow[r, "\phi"] \arrow[d, "f"'] & T \arrow[ld, "\tilde f"] \\
+          W                                            &                         
+        \end{tikzcd}
+      \]
+  \end{quote}
+\end{definition}
+
+Notemos que la definición no indica que el producto tensorial sea único ni asegura que exista. De este modo, es lo primero que hay que probar.
+
+\begin{theorem}
+  Sean $U$ y $V$ dos $F$-espacios vectoriales. El producto tensorial existe y es único salvo isomorfismos.
+\end{theorem}
+\begin{proof}
+  Primero probemos la unicidad, supongamos que $(T, \phi)$ y $(T', \phi')$ son dos productos tensoriales de $U$ y $V$. Por la propiedad universal tenemos que existen transformaciones $F$-lineales $\tilde\varphi\colon T' \to T$ y $\tilde\varphi'\colon T \to T'$ tales que los siguientes diagramas conmutan
+  \[
+    \begin{tikzcd}
+      U \times V \arrow[r, "\phi"] \arrow[d, "\phi'"'] & T \arrow[ld, "\tilde \phi'"] \\
+      T'                                               &                             
+    \end{tikzcd}
+      \qquad\qquad
+    \begin{tikzcd}
+      U \times V \arrow[r, "\phi"] \arrow[d, "\phi'"'] & T \\
+      T' \arrow[ru, "\tilde\phi"']                     &  
+    \end{tikzcd}
+  \]
+
+  Ahora esto implica que $\phi = (\tilde \phi \circ \tilde \phi' ) \circ \phi$, sin embargo la identidad $\Id_{T} \colon T \to T$ también satisface que $\phi = \Id_T \circ \phi$, de este modo, por la unicidad tenemos que $\tilde \phi \circ \tilde \phi' = \Id_T$. Procediendo análogamente tenemos que $\tilde \phi' \circ \tilde \phi = \Id_{T'}$, lo que finalmente muestra que $T \cong T'$.
+
+  Ahora, para la unicidad, consideremos el $F$-espacio vectorial $F^{(U \times V)}$, es decir, el espacio vectorial con base $\{e_{xy}\}_{(x,y) \in U \times V}$ y $L$ como el subespacio de $F^{(U \times V)}$ generado por los elementos de la forma
+  \[
+    \begin{cases}
+      e_{\lambda u_1 + \mu u_2, v} - \lambda e_{u_1 v} - \mu e_{u_2 v}, \\
+      e_{u, \lambda v_1 + \mu v_2} - \lambda e_{u v_1} - \mu e_{u v_2},
+    \end{cases}
+  \]
+  para todos $\lambda, \mu\in F$, $u, u_1, u_2 \in U$ y $v, v_1, v_2 \in V$. Así, definamos $T = F^{(U \times V)}/L$ y $\phi\colon U \times V \to  T$ como $\phi(u,v) = \pi(e_{uv})$, donde $\pi \colon F^{(U \times V)} \to F^{(U \times V)}/L$ es la proyección canónica, mostremos que este par satisface la propiedad universal y por ende es el producto tensorial de $U$ y $V$.
+
+  Primero, $\phi$ es bilineal por la definición de $L$, ya que para todos para todos $\lambda, \mu\in F$, $u, u_1, u_2 \in U$ y $v, v_1, v_2 \in V$ se tiene que
+  \begin{align*}
+    \phi(\lambda u_1 + \mu u_2, v) &= \pi(e_{\lambda u_1 + \mu u_2, v}) =  \lambda \pi(e_{u_1 v}) + \mu \pi(e_{u_2 v} ) = \lambda \phi(u_1, v) + \mu \phi(u_2, v), \\
+    \phi(u, \lambda v_1 + \mu v_2) &= \pi(e_{u, \lambda v_1 + \mu v_2}) =  \lambda \pi(e_{u v_1}) + \mu \pi(e_{u v_2} ) = \lambda \phi(u, v_1) + \mu \phi(u, v_2).
+  \end{align*}
+
+  De este modo, sea $f\colon U \times V \to W$ un mapa bilineal, definamos $f_0 \colon F^{(U \times V)} \to W$ dado por $f_0(e_{uv}) = f(u,v)$. Un cálculo rápido muestra que $L \subseteq \ker f_0$, de este modo, por el teorema fundamental de los homomorfismos tenemos que existe $\tilde f \colon T \to W$ tal que el siguiente diagrama conmuta.
+  \[
+    \begin{tikzcd}
+      F^{(U \times V)} \arrow[d, "\pi"'] \arrow[r, "f_0"] & W \\
+      T \arrow[ru, "\tilde f"']                           &  
+      \end{tikzcd}
+  \]
+  Así, basta probar que $\tilde f$ es la transformación buscada y que es única. Sea $(u,v) \in U \times V$ entonces veamos que
+  \[
+    (\tilde f \circ \phi)(u,v) = (\tilde f \circ \pi)(e_{uv}) = f_0(e_{uv}) = f(u,v),
+  \]
+  de este modo es claro que $f = \phi \circ \tilde f$. Ahora, supongamos que existe otro $\tilde f' \colon T \to W$ tal que $f = \phi \circ \tilde f'$, entonces es claro que
+  \[
+    (\tilde f \circ \phi)(u,v) = f(u,v)  = (\tilde f' \circ \phi)(u,v)
+  \]
+  para todo $(u,v) \in U \times V$. Sin embargo, por construcción, notemos que $T$ es generado por los elementos $\phi(u,v)$, de este modo, dado que coinciden en los generadores, entonces tenemos que $\tilde f = \tilde f'$. De este modo $(T, \phi)$ satisface la propiedad universal y por ende es un producto tensorial de $U$ y $V$.
+\end{proof}
+
+Esta proposición, en pocas palabras nos dice que existe una única estructura que sea el producto tensorial de dos espacios vectoriales, por ende podemos escribir $U \tensor_F V$ como el producto tensorial de $U$ y $V$, también, por simplicidad, a el mapa bilineal $\phi\colon U \times V \to U \tensor V$ lo denotaremos simplemente como $\tensor_F$, de este modo
+$\phi(u,v) = u \tensor_F v$. Finalmente, si no hay confusión, podemos prescindir del la mención del campo y por ende denotaremos simplemente como $U \tensor V$ al producto tensorial de $U$ y $V$.
+
+Ahora, regresando un poco a la prueba, notemos que en la construcción la imagen de $\phi$ genera a $T$. Esta será una propiedad no es una simple coincidencia de esta construcción en particular, sino que es una propiedad importante del producto tensorial.
+
+\begin{proposition}
+  Sean $U$ y $V$ dos $F$-espacios vectoriales. El par $(T, \phi)$ será el producto tensorial de $U$ y $V$ si y solo si la imagen de $\phi$ genera a $T$ y además para todo mapa bilineal $f\colon U \times V \to W$ existe una transformación $F$-lineal $\tilde f\colon T \to W$ tal que el siguiente diagrama conmuta.
+  \[
+    \begin{tikzcd}
+      U \times V \arrow[r, "\phi"] \arrow[d, "f"'] & T \arrow[ld, "\tilde f"] \\
+      W                                            &                         
+    \end{tikzcd}
+  \]
+\end{proposition}
+\begin{proof}
+  $(\Rightarrow)$ Si $(T, \phi)$ es el producto tensorial de $U$ y $V$ entonces la existencia de $\tilde f$ es clara, por la propiedad universal, así basta probar que $\im \phi$ genera a $T$.
+
+  Sea $T_0 = \inner{\Im \phi}$, notemos que $\phi$ define un mapa bilineal $\phi_0\colon U \times V \to T_0$ simplemente restringiendo el contradominio, además, si $i \colon T_0 \to T$ es la inclusión, entonces $\phi = i \circ \phi_0$. Ahora, por la propiedad universal, tenemos que existe una única transformación $\tilde \phi_0 \colon T \to T_0$ tal que $\phi_0 = \tilde \phi_0 \circ \phi$, de este modo veamos que
+  \[
+    \phi = i \circ \phi_0 = (i \circ \tilde \phi_0) \circ \phi
+  \]
+  Dado que $\phi = \Id_T \circ \phi$, entonces por la unicidad tenemos que $i \circ \tilde \phi_0 = \Id_T$, pero esto implica que
+  \[
+    T_0 \subseteq T = \im \Id_T = \im(i \circ \tilde \phi_0) \subseteq \im i = T_0,
+  \]
+  por ende $T_0 = T$ y así la imagen de $\im \phi$ genera a $T$.
+
+  $(\Leftarrow)$ Notemos que basta con probar la unicidad de $\tilde f$. De este modo, supongamos que $\tilde f'\colon T \to W$ es otra transformación $F$-lineal tal que $f = \tilde f' \circ \phi$, entonces para cada $(u,v) \in U \times V$ se tiene que
+  \[
+    (\tilde f \circ \phi)(u,v) = f(u,v)  = (\tilde f' \circ \phi)(u,v)
+  \]
+  Sin embargo, dado que $T$ es generado por los elementos $\phi(u,v)$, así como $\tilde f$ y $\tilde f'$ coinciden en estos, entonces tenemos que $\tilde f = \tilde f'$. Por ende, $(T, \phi)$ es el producto tensorial de $U$ y $V$.
+\end{proof}
+
+Esta proposición, además de darnos una equivalencia para probar que un espacio es el producto tensorial, nos dice que todo elemento $w \in U \tensor V$ es de la forma
+\[
+  w = \sum_{i=1}^n u_i \tensor v_i,
+\]
+para algunos $u_i \in U$ y $v_i \in U$. Sin embargo, esta representación no es única. Además, general, un elemento de $U \tensor V$ podría no poderse escribir simplemente como $u \tensor v$.
+
+\begin{example}
+  Consideremos $V = F^2$, entonces $V \tensor V = \Mat_2(F)$ si tomamos $u \tensor v = uv^t$. 
+
+  Es fácil ver que este mapa es bilineal y que su imagen genera a todo $\Mat_2(F)$ ya que $\{e_1 e_1^t, e_1 e_2^t, e_2 e_1^t, e_2 e_1^t\}$ es la base canónica de $\Mat_2(F)$. Además, si $f\colon V \times V \to W$ es un mapa bilineal, entonces podemos definir $\tilde f \colon \Mat_2(F) \to W$ simplemente como
+  \[
+    \tilde f ( e_i e_j^t) = f(e_i, e_j)   \qquad i,j \in \{ 1,2\}.
+  \]
+  
+
+  Además, en este ejemplo en específico, si $w = e_1 \tensor e_1 + e_2 \tensor e_2$, entonces tenemos que no existen $u,v \in V$ tales que $w = u \tensor v $. Ya que si $u = (\lambda_1, \lambda_2)^t$ y $v = (\mu_1, \mu_2)^t$ entonces tenemos que
+  \[
+    w = \pmtx{1 & 0 \\ 0 & 1} 
+    \Eqand
+    u \tensor v = 
+      \begin{pmatrix}
+        \lambda_1 \mu_1 & \lambda_1 \mu_2 \\
+        \lambda_2 \mu_1 & \lambda_2 \mu_2
+      \end{pmatrix}
+  \]
+  Notemos que si $w = u \tensor v$ entonces $\lambda_1 = 0$ o $\mu_2 = 0$, sin embargo, esto implicaría que $\lambda_1\mu_1 = 0$ o $\lambda_2\mu_2 = 0$, lo cual es una contradicción. Así $w$ no puede ser expresado de la forma $u \tensor v$.
+\end{example}
