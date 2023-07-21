@@ -98,7 +98,7 @@ Existe una fuerte conexión entre los conceptos de independencia lineal en espac
   Sea $K$ un campo extendiendo $F$ y sea $S \subseteq K$ algebraicamente independiente sobre $F$. Si $t\in K$ es trascendente sobre $F(S)$, entonces $S \cup \{t\}$ es algebraicamente independiente sobre $F$.
 \end{lemma}
 \begin{proof}
-  Suponga que el lema es falso. Entonces existe un polinomio distinto de cero $f \in F[x_1, \ldots, x_n, y]$ con $f(s_1, \ldots, s_n, t) = 0$ para algunos $s_i \in S$. Este polinomio debe involucrar a $y$, ya que $S$ es algebraicamente independiente sobre $F$. Escribiendo $f = \sum_{j=0}^m g_j y^j$ con $g_j \in F[x_1, \ldots, x_n]$, ya que $g_m \neq 0 $, $t$ es algebraico sobre $F(S)$, una contradicción. De este modo, $S \cup \{t\}$ es algebraicamente independiente sobre $F$.
+  Supongamos que el lema es falso. Entonces existe un polinomio distinto de cero $f \in F[x_1, \ldots, x_n, y]$ con $f(s_1, \ldots, s_n, t) = 0$ para algunos $s_i \in S$. Este polinomio debe involucrar a $y$, ya que $S$ es algebraicamente independiente sobre $F$. Escribiendo $f = \sum_{j=0}^m g_j y^j$ con $g_j \in F[x_1, \ldots, x_n]$, ya que $g_m \neq 0 $, $t$ es algebraico sobre $F(S)$, una contradicción. De este modo, $S \cup \{t\}$ es algebraicamente independiente sobre $F$.
 \end{proof}
 
 Probamos ahora la existencia de una base de trascendencia para cualquier extensión de campos.
@@ -145,7 +145,7 @@ Este teorema muestra que el tamaño de una base de trascendencia para $K/F$ es �
   Sean $t_1, \ldots, t_n \in K$. Entonces los campos $F(t_1, \ldots, t_n)$ y $F(x_1, \ldots, x_n)$ son $F$-isomorfos si y solo si $\{t_1,\ldots, t_n\}$ es un conjunto algebraicamente independiente sobre $F$.
 \end{corollary}
 \begin{proof}
-  Si $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$, entonces $F(t_1, \ldots, t_n)$ y $F(x_1, \ldots, x_n)$ son campos $F$-isomorfos por el lema \ref{lemma:2.1.5}.
+  Si $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$, entonces los campos $F(t_1, \ldots, t_n)$ y $F(x_1, \ldots, x_n)$ son $F$-isomorfos por el lema \ref{lemma:2.1.5}.
 
   Recíprocamente, si $F(t_1, \ldots, t_n) \cong F(x_1, \ldots, x_n)$, suponga que $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$. Por el teorema \ref{theo:2.1.13} $b)$ existe un subconjunto $S$ de $\{t_1, \ldots, t_n\}$ tal que $S$ es una base de trascendencia para $F(t_1, \ldots, t_n)/F$. Sin embargo, el grado de trascendencia de esta extensión es $n$, una contradicción. De este modo, $\{t_1, \ldots, t_n\}$ es algebraicamente independiente sobre $F$.
 \end{proof}
@@ -174,7 +174,7 @@ Probamos ahora el hecho aritmético principal acerca de los grados de trascenden
 
 \ExerciseSection
 
-\begin{exerciseList}
+\begin{ExerciseList}
   \item Sea $K$ un campo extendiendo $F$, sea $\alpha \in K$ algebraico sobre sobre $F$ y sea $t \in T$ trascendente sobre $F$. Demuestra que $\min(F, \alpha) = \min(F(t), \alpha)$ y que $[F(\alpha) : F] = [F(t, \alpha) : F(t)]$.
   
   \item Suponga que $L_1$ y $L_2$ son campos intermedios de $K/F$. Demuestre que
@@ -185,4 +185,4 @@ Probamos ahora el hecho aritmético principal acerca de los grados de trascenden
   \item Sea $K$ una extensión finitamente generada de $F$. Si $L$ es un campo con $F \subseteq L \subseteq K$, demuestre que $L/F$ es finitamente generado.
   
   \item Sea $x$ trascendente sobre $\C$ y sea $K$ la cerradura algebraica de $\C(x)$. Pruebe que $K \cong \C$.
-\end{exerciseList}
+\end{ExerciseList}

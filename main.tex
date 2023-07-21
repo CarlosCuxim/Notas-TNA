@@ -1,13 +1,14 @@
 % !TeX root = main.tex
-\documentclass[11pt]{book}
+\documentclass{qx-files/qx-book}
 
 
 
 % IDIOMA -----------------------------------------------------------------------
 \usepackage[spanish, mexico]{babel}
 
+
+
 % GRÁFICOS ---------------------------------------------------------------------
-\usepackage{geometry}
 \usepackage{hyperref}
 
 \usepackage{tikz}
@@ -18,45 +19,53 @@
       arrow style=math font
     }
 
-% MACROS -----------------------------------------------------------------------
-\usepackage{packages/qx-tools}
-\usepackage{packages/qx-book}
 
-\usepackage{enumitem}
-  \setlist[enumerate, 1]{label=$\alph*)$}
+
+% MACROS -----------------------------------------------------------------------
+\usepackage{qx-files/qx-tools}
+
+
 
 % FUENTE -----------------------------------------------------------------------
+\usepackage{fontspec}
 \usepackage{newtxtext, newtxmath}
-\usepackage[T1]{fontenc}
 
 
 
-% OTROS ------------------------------------------------------------------------
+% INFORMACIÓN ------------------------------------------------------------------
 \title{Teoría de Números Algebraicos}
+\subtitle{Notas del curso de 2023}
 \author{Javier Arturo Díaz Vargas \and Carlos Enrique Cuxim Tuz}
+\publisher{Facultad de matemáticas -- UADY}
 \date{\today}
 
 
 
 \begin{document}
 
+\MakeBookCover
+
+\frontmatter
+
 \maketitle
 
 \tableofcontents
 
-
+\mainmatter
 
 \chapter{Preliminares de álgebra conmutativa}
 
-  %\input{capitulos/C1.tex}
+  \input{capitulos/C1.tex}
 
 \chapter{Extensiones trascendentes}
 
-  %\input{capitulos/C2/S1.tex}
+  \input{capitulos/C2/S1.tex}
 
   \input{capitulos/C2/S2.tex}
 
+%\appendix
 
+%\backmatter
 
 \end{document}
 

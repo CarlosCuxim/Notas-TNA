@@ -1,0 +1,138 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qx-files/qx-boxes}
+
+
+
+% ==============================================================================
+% ---------------------- PAQUETE CREADO POR CARLOS CUXIM -----------------------
+%
+% Este paquete contiene los macros relacionados con las cajas de ejercicios.
+% Contiene las definiciones de los entornos {exercises}, {exercises*}, {lema} y
+% {definition}.
+%
+% ==============================================================================
+
+% OPCIONES ---------------------------------------------------------------------
+\newif\if@qxBookStyle
+\DeclareOption{BookStyle}{%
+  \@qxBookStyletrue
+}
+\ProcessOptions\relax
+
+
+
+
+% PAQUETES REQUERIDOS ----------------------------------------------------------
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+
+\RequirePackage{tcolorbox}
+  \tcbuselibrary{breakable}
+  \tcbuselibrary{skins}
+
+
+
+% COLORES ----------------------------------------------------------------------
+
+% Colores de las cajas
+\colorlet{qx-box-Main}{blue!50!black}
+\colorlet{qx-box-Secondary}{blue!50!black}
+
+
+
+% ENTORNOS TEOREMAS ------------------------------------------------------------
+
+\if@qxBookStyle
+  \newtheorem{theorem}{Teorema}[section]
+\else
+  \newtheorem{theorem}{Teorema}
+\fi
+
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+
+% CAJAS {definition} Y {definition*} -------------------------------------------
+
+% Definición de la caja
+\newtcolorbox{definition}[1][\relax]{
+  title       = {\refstepcounter{theorem}Definición \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.},
+  coltitle    = black,
+  fonttitle   = \bfseries,
+  colback     = white,
+  colframe    = qx-box-Main,
+  parbox      = false,
+  %top         = 2mm+\tcboxedtitleheight/4,
+  sharp corners,
+  breakable,
+  enhanced,
+  attach boxed title to top left = {yshift=-\tcboxedtitleheight/2, xshift=4mm+1mm-2pt},%left + boxsep - titleleft
+  boxed title style = {
+                        colback=white,
+                        left=2pt, right=2pt, top=0pt, bottom=0pt,
+                        boxsep=0mm,
+                        frame empty,
+                        sharp corners
+                      }
+}
+
+% Definición de la caja sin numeración
+\newtcolorbox{definition*}[1][\relax]{
+  title       = {Definición\ifx#1\relax\else\space{\normalfont(#1)}\fi.},
+  coltitle    = black,
+  fonttitle   = \bfseries,
+  colback     = white,
+  colframe    = qx-box-Main,
+  parbox      = false,
+  parbox      = false,
+  %top         = 1.5mm+\tcboxedtitleheight/4,
+  sharp corners,
+  breakable,
+  enhanced,
+  attach boxed title to top left = {yshift=-\tcboxedtitleheight/2, xshift=4mm+1mm-2pt},%left + boxsep - titleleft
+  boxed title style = {
+                          colback=white,
+                          left=2pt, right=2pt, top=0pt, bottom=0pt,
+                          boxsep=0mm,
+                          frame empty,
+                          sharp corners
+                        }
+}
+
+% CAJA {example} ---------------------------------------------------------------
+
+\newtcolorbox{qx-example-box}{
+  colback = white,
+  frame hidden,
+  sharp corners,
+  %right=0mm, left=4mm+1mm,% left + boxsep
+  %boxsep = 0mm,
+  enhanced,
+  borderline west={2mm}{0pt}{qx-box-Main},
+  parbox = false,
+  %before skip = \medskipamount,
+  %after skip = \medskipamount,
+  breakable
+}
+
+\newenvironment{example}[1][\relax]%
+  {\begin{qx-example-box}%
+    {\bfseries Ejemplo \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
+  {\end{qx-example-box}}
+
+% ENTORNO {answer} -------------------------------------------------------------
+
+\newenvironment{answer}[1][Solución]
+  {\begin{proof}[#1]\let\qed\relax}
+  {\end{proof}}
+
+
+
+
+
+
+
+
+
+\endinput

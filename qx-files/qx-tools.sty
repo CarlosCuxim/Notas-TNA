@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qx-files/qx-tools}
+
+
+
+% ==============================================================================
+% ---------------------- PAQUETE CREADO POR CARLOS CUXIM -----------------------
+%
+% Este paquete sirve para cargar los 3 paquetes menores a la vez.
+%
+% ==============================================================================
+
+\DeclareOption*{%
+  \PassOptionsToPackage{\CurrentOption}{qx-files/qx-boxes}%
+}
+\ProcessOptions\relax
+
+\RequirePackage{qx-files/qx-boxes}
+\RequirePackage{qx-files/qx-math}
+\RequirePackageWithOptions{qx-files/qx-delimiters}
+
+
+
+\endinput
