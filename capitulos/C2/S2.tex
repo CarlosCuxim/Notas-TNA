@@ -222,11 +222,24 @@ para todo $a,b \in A$ y todo $\alpha \in F$; esto es, existe compatibilidad entr
 \end{equation}
 Dejamos al lector verificar el resultado siguiente.
 
-\begin{proposition}
+\begin{proposition}\label{prop:tensor-alg}
   Sean $A$ y $B$ álgebras sobre $F$. La ecuación \eqref{eq:mult-tensor-alg} es una multiplicación bien definida sobre $A \tensor B$ y con respecto a esta multiplicación, $A\tensor B$ es una $F$-álgebra.
 \end{proposition}
 
 
 
 
+\ExerciseSection
 
+\begin{ExerciseList}
+  \item Si $U$ y $V$ son $F$-espacios vectoriales, muestre que $U \tensor V \cong V \tensor U$.
+  
+  \item Si $U$ y $V$ son $F$-espacios vectoriales, muestre que existe un isomorfismo entre $U \tensor V$ y $V \tensor U^*$ que manda $u \tensor v$ a $v \tensor \hat u$, donde $\hat u$ es definido como sigue: si $\{u_1,\cdots,u_n\}$ es una base de $U$ y si $\{\hat u_1,\ldots,\hat u_n\}$ es la base dual para $U^*$ si $u=\sum_i a_i u_i$ entonces $\hat u = \sum_i a_i \hat u_i$.
+  
+  \item Sean $U$, $V$ y $W$ espacios vectoriales sobre $F$. Muestre que
+    \[
+      \hom(U \tensor V, W) \cong \hom(U, \hom(V,W)).
+    \]
+
+  \item De una prueba de la proposición \ref{prop:tensor-alg}.
+\end{ExerciseList}
