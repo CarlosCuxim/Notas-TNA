@@ -13,6 +13,7 @@
 
 \RequirePackage{geometry}
 \RequirePackage{microtype}
+\RequirePackage{fancyhdr}
 \RequirePackage{tikz}
 
 
@@ -20,6 +21,35 @@
 % PALETA DE COLORES ------------------------------------------------------------
 \colorlet{MainColor}{blue!30!black}
 \colorlet{SecondaryColor}{yellow!80!red}
+
+
+% CABEZERA Y PIE DE PÁGINA -----------------------------------------------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}% Se suprime la linea de la cabecera
+\fancyhead[EL,OR]{\thepage}% Número de página
+\fancyhead[ER]{\leftmark}% Nombre del capítulo
+\fancyhead[OL]{\rightmark}% Nombre de la sección
+\fancyfoot{} % Se suprimo el pie de página
+
+% Formato de \leftmark (capítulo)
+\renewcommand{\chaptermark}[1]{\markboth{%
+  \ifnum\c@secnumdepth>\m@ne
+    \if@mainmatter
+      \thechapter.%
+    \fi
+  \fi
+  \space#1}{}}
+
+% Formato de \leftmark (sección)
+\renewcommand{\sectionmark}[1]{\markright{%
+  \ifnum\c@secnumdepth>\z@
+    \thesection%
+  \fi
+  \space#1}}
+
+% Se agrega más espacio a la cabecera
+\addtolength{\headheight}{1pt}
+\addtolength{\topmargin}{-1pt}
 
 
 
@@ -76,7 +106,7 @@
 
 % Definición de la cubierta
 \newcommand\MakeBookCover{%
-  \pagestyle{empty}% La numeración se suprime
+  \thispagestyle{empty}% La numeración se suprime
   \newgeometry{left=1.5in, right=1in, top=0.5in, bottom=1in}% Cambio de los márgenes
   \begin{titlepage}% Se inicia el titlepage
     \parindent\z@\raggedright\sffamily% Cambio del formato del párrafo
@@ -86,8 +116,7 @@
     \Qx@PrintBookCover% Se imprime el texto de la cubierta
   \end{titlepage}%
   \restoregeometry% Se vuelve a los márgenes anteriores
-  \cleardoublepage% Se agrega una página extra
-  \pagestyle{headings}% Se reanuda la numeración
+  \clearpage\thispagestyle{empty}\clearpage% Se agrega una página vacía
 }
 
 
@@ -193,7 +222,7 @@
 \def\@makechapterhead#1{%
   \vspace*{50\p@}%
   {\parindent\z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth>\m@ne
+    \ifnum\c@secnumdepth>\m@ne
         \if@mainmatter
           \QxChapterHead{#1}%
         \else
