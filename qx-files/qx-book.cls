@@ -35,7 +35,7 @@
 \renewcommand{\chaptermark}[1]{\markboth{%
   \ifnum\c@secnumdepth>\m@ne
     \if@mainmatter
-      \thechapter.%
+      \thechapter.\enspace%
     \fi
   \fi
   \space#1}{}}
@@ -43,7 +43,7 @@
 % Formato de \leftmark (sección)
 \renewcommand{\sectionmark}[1]{\markright{%
   \ifnum\c@secnumdepth>\z@
-    \thesection%
+    \thesection.\enspace%
   \fi
   \space#1}}
 
