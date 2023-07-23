@@ -1,0 +1,44 @@
+\section{Sucesiones exactas}
+
+Decimos que una sucesión de $A$-módulos y $A$-homomorfismos
+\begin{equation}\label{eq:1.1}%
+  \cdots \to M_{i-1}
+    \labto{f_i} M_i 
+    \labto{f_{i+1}} M_{i+1}
+    \to \cdots  
+\end{equation}
+es \emph{exacta} en $M_i$ si $\im f_i = \ker f_{i+1}$. La sucesión es \emph{exacta} si es exacta en cada $M_i$. En particular:
+\begin{enumerate}
+  \item $0 \to M' \labto{f} M $ es exacta si y solo si $f$ es inyectiva.
+  \item $M \labto{g} M'' \to 0$ es exacta si y solo si $g$ es suprayectiva.
+  \item $0 \to M' \labto{f} M \labto{g} M'' \to 0$ es exacta si y solo si $f$ es inyectiva, $g$ es suprayectiva y $g$ induce un isomorfismo de $\coker f = M / \im f$ sobre $M''$.
+\end{enumerate}
+
+Una sucesión del tipo $(c)$ es llamada una \emph{sucesión exacta corta}- Cualquier sucesión exacta larga \eqref{eq:1.1} se puede dividir en sucesiones exactas cortas: si $N_i = \im f_i = \ker f_{i+1}$, tenemos para cada $i$ sucesiones exactas cortas $0 \to N_i \to M_i \to N_{i+1} \to 0$.
+
+\begin{lemma}[de la serpiente]\label{prop:1.5.1}%
+  Sea 
+  \[
+    \begin{tikzcd}
+      0 \arrow[r] & M' \arrow[r, "f"] \arrow[d, "h'"] & M \arrow[r, "g"] \arrow[d, "h"] & M'' \arrow[r] \arrow[d, "h''"] & 0 \\
+      0 \arrow[r] & N' \arrow[r, "f'"']               & N \arrow[r, "g'"']              & N'' \arrow[r]                  & 0
+    \end{tikzcd}
+  \]
+  un diagrama conmutativo de $A$-módulos y homomorfismos, con los renglones exactos. Entonces existe una sucesión exacta
+  \begin{equation}\label{eq:1.5}%
+    0 \to \ker h' \labto{\bar f} \ker h \labto{\bar g} \ker h'' \labto{\delta} 
+      \coker h' \labto{\bar f'} \coker h \labto{\bar g'} \coker h'' \to 0.
+  \end{equation}
+  en la que $\bar f$, $\bar g$ son restricciones de $f$, $g$ y $\bar f'$, $\bar g'$ son inducidas por $\bar f'$, $\bar g'$ son inducidas por $f'$, $g'$. \qed
+\end{lemma}
+
+El \emph{homomorfismo frontera $\delta$} se define como sigue: si $x'' \in \ker h''$, tenemos que $x'' = g(x)$ para algún $x \in M$ y $g'(h(x)) = h''(g(x)) = 0$, de aquí $h(x) \in \ker g' = \im f'$, así que $h(x) = f'(y')$ para algún $y' \in N'$. Entonces $\delta(x'')$ se define como la imagen de $y'$ en el $\coker h'$. La verificación de que $\delta$ está bien definido y de que la sucesión \eqref{eq:1.5} es exacta es un ejercicio directo en persecución de elementos en el diagrama, que dejamos al lector.
+
+
+
+\ExerciseSection
+
+\begin{ExerciseList}
+  \item Sea $0 \to M' \labto{f} M \labto{g} M'' \to 0$ una sucesión exacta de $A$-módulos. Muestre que $M$ es noetheriano si y solo si $M'$ y $M''$ son noetherianos.
+  \item Pruebe en detalle la proposición \ref{prop:1.5.1}.
+\end{ExerciseList}

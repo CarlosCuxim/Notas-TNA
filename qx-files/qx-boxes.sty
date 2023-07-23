@@ -31,6 +31,8 @@
   \tcbuselibrary{breakable}
   \tcbuselibrary{skins}
 
+\RequirePackage{enumitem}
+
 
 
 % COLORES ----------------------------------------------------------------------
@@ -52,6 +54,13 @@
 \newtheorem{proposition}[theorem]{Proposición}
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{corollary}[theorem]{Corolario}
+
+% Listas dentro de teoremas
+\newlist{subtheorem}{enumerate}{1}
+\setlist[subtheorem]{label=$(\alph*)$}
+
+
+
 
 % CAJAS {definition} Y {definition*} -------------------------------------------
 
@@ -116,9 +125,16 @@
   breakable
 }
 
+% Entorno de ejemplos
 \newenvironment{example}[1][\relax]%
   {\begin{qx-example-box}%
-    {\bfseries Ejemplo \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
+    {\bfseries Ejemplo \refstepcounter{theorem}\thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
+  {\end{qx-example-box}}
+
+% Entorno de ejemplos sin numeración
+\newenvironment{example*}[1][\relax]%
+  {\begin{qx-example-box}%
+    {\bfseries Ejemplo\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
   {\end{qx-example-box}}
 
 % ENTORNO {answer} -------------------------------------------------------------

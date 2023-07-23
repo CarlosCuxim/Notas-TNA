@@ -1,0 +1,121 @@
+\section{Módulos}
+
+Sea $A$ un anillo. Un \emph{$A$-módulo} es un grupo abeliano $M$ junto con una función (multiplicación escalar) de $A\times M \to M$, $(a,x) \mapsto ax$ tal que se satisfacen los siguientes axiomas:
+\begin{align*}
+  a(x+y) &= ax + ay, \\
+  (a+b)x &= ax + bx, \\
+  (ab)x &= a(bx), \\
+  1x &= x,
+\end{align*}
+para todo $a,b \in A$ y todo $x,y \in M$.
+
+La noción de módulo es una generalización de varios conceptos familiares. Por ejemplo, un ideal $I$ de $A$ es un $A$-módulo. Si $A = k$ es un campo, entonces un $A$-módulo es un $k$-espacio vectorial. Un $\Z$ módulo es un grupo abeliano.
+
+Un \emph{submódulo} $N$ de $M$ es un subgrupo de $M$ que es cerrado respecto a la multiplicación por elementos de $A$. El grupo abeliano $M/N$ hereda de $M$ una estructura de $A$-módulo definida por $a(x+N) = ax + N$. El $A$-módulo $M/N$ es el \emph{cociente} de $M$ por $N$.
+
+La mayoría de las operaciones con ideales tienen sus análogas para módulos. Sea $M$ un $A$-módulo y sea $(M_i)_{i\in I}$ una familia de submódulos de $M$. Su \emph{suma} $\sum M_i$ es el conjunto de todas las sumas $\sum x_i$ donde $x_i \in M_i$ donde $x_i \in M_i$ para todo $i \in I$ y donde casi todas las $x_i$ son cero. El \emph{producto} $IM$, donde $I$ es un ideal de $A$ y $M$ un $A$-módulo, es el conjunto de todas las sumas finitas $\sum a_i x_i$ con $a_i \in I$ y $x_i \in M$, es un submódulo de $M$.
+
+Si $x$ es un elemento de $M$, el conjunto de todos los múltiplos $ax$ con $a \in A$ es un submódulo de $M$, llamado el submódulo \emph{cíclico} generado por $x$ y se denota $Ax$ o $(x)$. Si $M = \sum_{i \in I} A x_i$, las $x_i$ se dicen que son un \emph{conjunto de generadores} de $M$. Un $A$-módulo $M$ se dice que es \emph{finitamente generado} si tiene un conjunto finito de generadores.
+
+\begin{definition}
+  Sean $M$ y $N$, $A$-módulos. Una función $f\colon M \to N $ es un homomorfismo de $A$-módulos (o es $A$-lineal) si 
+    \[
+      f(am+bn) = af(m) + bf(n)
+    \]
+  para todo $a,b \in A$ y $m,n \in M$.
+\end{definition}
+
+Tenemos las siguiente definiciones: 
+\begin{itemize}
+  \item Un \emph{endomorfismo} es un homomorfismo de $M$ a $M$.
+  \item Un monomorfismo es un homomorfismo inyectivo.
+  \item Un epimorfismo es un homomorfismo suprayectivo.
+  \item Un isomorfismo es un homomorfismo biyectivo.
+\end{itemize}
+
+Si $f$ es un homomorfismo entonces el núcleo de $f$,
+  \[
+    \ker f = \{m \in M : f(m) = 0\}
+  \]
+y la imagen de $f$,
+  \[
+    \im f = \{f(m) : m \in M\}
+  \]
+son submódulos de $M$ y $N$, respectivamente. Si $A$ es un campo, un homomorfismo de $A$-módulos es una transformación lineal de espacios vectoriales. El conjunto de todos los homomorfismos de $A$-módulos de $M$ a $N$ es también un $A$-módulo con la suma de homomorfismos la suma usual de funciones, $(f+g)(m) = f(m) + g(m)$ y $(af)(m) = af(m)$ para toda $m \in M$. Este $A$-módulo se denota por $\Hom_A(M,N)$.
+
+Todos los teoremas de isomorfismos se sostienen para $R$-módulos. Las pruebas invocan el teorema correspondiente para grupos y luego se prueba que los homomorfismos de grupos son también homomorfismos de $R$-módulos.
+
+\emph{Primer teorema de isomorfismo}: Sean $M,N$, $A$-módulos y sea $f\colon M \to N$ un homomorfismo de $A$-módulos. Entonces $\ker f$ es un submódulo de $M$ tal que $M/\ker f \cong \im f$.
+
+\emph{Segundo teorema de isomorfismo}: Sean $N,P$ submódulos del $A$-módulo $M$. Entonces $(N+P)/P \cong N/(N \cap P)$.
+
+\emph{Tercer teorema de isomorfismo}: Sea $M$ un $A$-módulo y sean $N$ y $P$ submódulos de $M$ con $N \subseteq P$. Entonces $(M/N)/(P/N) \cong M/P$.
+
+\emph{Teorema de correspondencia}: Sea $N$ un submódulo del $A$-módulo $M$. Existe una biyección entre los submódulos de $M$ que contienen $N$ y los submódulos de $M/N$. La correspondencia es dada por $P \leftrightarrow P/N$, para toda $P \supseteq N$. Esta correspondencia conmuta con el proceso de tomar sumas e intersecciones.
+
+\begin{definition}
+  Un $A$-módulo $M$ es \emph{noetheriano} si cada submódulo de $M$ es finitamente generado.
+\end{definition}
+
+Esto es equivalente a la condición de que $M$ satisface la condición de que $M$ satisface la condición de cadena ascendente sobre submódulos o que cualquier colección no vacía de submódulos de $M$ tiene un elemento maximal.
+
+La importancia de los módulos noetherianos viene de la observación siguiente:
+
+\begin{theorem}[de la base de Hilbert para módulos]
+  Si $A$ es un anillo noetheriano y $M$ es un $A$-módulo finitamente generado, entonces $M$ es noetheriano.
+\end{theorem}
+\begin{proof}
+  Suponga que $M$ es generado por $f_1, \ldots, f_t$ y sea $N$ un submódulo. Mostramos que $N$ es finitamente generado por inducción sobre $t$.
+
+  Si $t = 1$, entonces el homomorfismo $A \to M$ mandando $1$ a $f_1$ es suprayectivo. La preimagen de $N$ es un ideal que es finitamente generado ya que $A$ es noetheriano. Las imágenes de sus generadores generan $N$.
+
+  Ahora suponga que $t>1$. La imagen de $N$, $\overline N$, en $M/Af_1$ es finitamente generada por inducción. Sean $g_1,\ldots,g_s$ elementos de $N$ cuyas imágenes generan $\overline N$. Ya que $Af_1 \subseteq M$ es generado por un elemento, su submódulo $N \cap Af_1$ es finitamente generado, digamos por $h_1,\ldots,h_r$.
+
+  Mostraremos que los elementos $h_1,\ldots,h_r$ y $g_1,\ldots,g_s$ juntos generan $N$. Dado $n \in N$, la imagen de $n$ en $\overline N$ es una combinación lineal de las imágenes de las $g_i$; restando las combinaciones lineales correspondientes de las $g_i$ de $N$, obtenemos un elemento de $N \cap Af_1$, que es una combinación lineal de las $h_i$ por hipótesis. Esto muestra que $n$ es una combinación lineal de las $g_i$ y $h_i$.
+\end{proof}
+
+\begin{lemma}[Nakayama]
+  Sea $A$ un anillo local y sea $I$ un ideal propio de $A$. Sea $M$ un $A$-módulo finitamente generado.
+  \begin{subtheorem}
+    \item Si $IM = M$, entonces $M = 0$.
+    \item Si $N$ es un submódulo de $M$ tal que $N+IM = M$, entonces $N = M$.
+  \end{subtheorem}
+\end{lemma}
+\begin{proof}
+  $(a)$ Suponga que $M \neq 0$. Entre todos los conjuntos posibles de generadores para $M$, escoja uno $\{m_1,\ldots,m_k\}$ tomando el menor número posible de elementos. Por hipótesis podemos escribir
+  \[
+    m_k = a_1 m_1 + a_2 m_2 + \cdots + a_k m_k
+      \quad\text{para ciertos}\quad a_i \in I.
+  \]
+  Entonces
+  \[
+    (1-a_k)m_k = a_1 m_1 + a_2 m_2 + \cdots + a_{k-1} m_{k-1}.
+  \]
+  Si $J$ es el ideal maximal de $A$, $I \subseteq J$ y $1-a_k \notin J$. De aquí, $1-a_k$ es una unidad y por lo tanto $\{m_1,\ldots,m_{k-1}\}$ genera $M$. Esto contradice nuestra selección de $\{m_1,\ldots,m_k\}$ y por lo tanto $M = 0$.
+
+  (b) Mostraremos que $I(M/N) = M/N$ y entonces, aplicando la primera parte del lema, concluimos que $M/N = 0$. Considere $m+N$, $m \in M$. Por hipótesis, podemos escribir
+  \[
+    m + n + \sum a_i m_i,
+      \qquad \text{con}\ a_i \in I,
+      \qquad \text{con}\ m_i \in M.
+  \]
+  Por consiguiente,
+  \[
+    m+N = \sum a_i m_i + N = \sum a_i (m_i + N),
+  \]
+  de donde $m + N \in I(M/N)$.
+\end{proof}
+
+En el lema, la hipótesis de que $M$ sea finitamente generado es crucial. Por ejemplo, sea
+\[
+  \Z_{(5)} = \{q \in \Q : q = a/b \ \text{con}\ a,b \in \Z, 5 \nmid b\}.
+\]
+Entonces $q = a/b$ es una unidad de $\Z_{(5)}$ si y solo si $5 \nmid a$. Por lo tanto, las no unidades de $\Z_{(5)}$ son
+\[
+  \{ a/b \in \Z_{(5)} : 5 \mid a \} = 5\Z_{(5)}.
+\]
+
+Este es un ideal, así que $\Z_{(5)}$ es un anillo local con ideal maximal $5\Z_{(5)}$. Considere $\Q$ como un $\Z_{(5)}$-módulo. Entonces $\Q = 5\Z_{(5)}\Q$, pero $\Q \neq 0$. El punto es que $\Q$ no es finitamente generado sobre $\Z_{(5)}$,
+\[
+  \Q = \Z_{(5)} + \Z_{(5)} \frac{1}{5} + \Z_{(5)}\frac{1}{5^2} + \cdots .
+\]

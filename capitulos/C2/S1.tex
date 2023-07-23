@@ -105,17 +105,17 @@ Probamos ahora la existencia de una base de trascendencia para cualquier extensi
 
 \begin{theorem}\label{theo:2.1.13}
   Sea $K$ un campo extendiendo $F$.
-  \begin{enumerate}
+  \begin{subtheorem}
     \item Existe una base de trascendencia para $K/F$.
     \item Si $T \subseteq K$ es tal que $K/F(T)$ es algebraico, entonces $T$ contiene una base de trascendencia para $K/F$.
     \item Si $\subseteq K$ es algebraicamente independiente, entonces $S$ está contenido en una base de trascendencia para $K/F$.
     \item Si $S \subseteq T \subseteq K$ es tal que $S$ es algebraicamente independiente sobre $F$ y $K/F(T)$ es algebraica, entonces existe una base de trascendencia $X$ para $K/F$ con $S \subseteq X \subseteq T$.
-  \end{enumerate}
+  \end{subtheorem}
 \end{theorem}
 \begin{proof}
-  Indicamos primero por qué el enunciado $d)$ implica los tres primeros enunciados. Si $d)$ es verdadero, entonces $b)$ y $c)$ son verdaderos tomando $S = \emptyset$ y $T = K$ respectivamente. El primer enunciado se sigue de $d)$ poniendo $S = \emptyset$ y $T = K$.
+  Indicamos primero por qué el enunciado $(d)$ implica los tres primeros enunciados. Si $(d)$ es verdadero, entonces $(b)$ y $(c)$ son verdaderos tomando $S = \emptyset$ y $T = K$ respectivamente. El primer enunciado se sigue de $(d)$ poniendo $S = \emptyset$ y $T = K$.
 
-  Para probar $d)$ sea $\Sp$ el conjunto de todos los subconjuntos algebraicamente independientes de $T$ que contienen a $S$. Entonces $\Sp$ es no vacío ya que contiene a $S$. Ordenando a $\Sp$ por inclusión, el lema de Zorn muestra que $\Sp$ tiene un elemento maximal $M$. Si $K$ no es algebraico sobre $F(M)$, entonces $F(T)$ no es algebraico sobre $F(M)$, ya que $K$ es algebraico sobre $F(T)$. De este modo, existe $t \in T$ con $t$ trascendente sobre $F(M)$. Pero por el lema \ref{lemma:2.1.12}, $M \cup \{t\}$ es algebraicamente independiente sobre $F$ y es un subconjunto de $T$, contradiciendo la maximalidad de $M$. De este modo, $K$ es algebraico sobre $F(M)$, así que $M$ es una base de trascendencia de $K/F$ contenida en $T$.
+  Para probar $(d)$ sea $\Sp$ el conjunto de todos los subconjuntos algebraicamente independientes de $T$ que contienen a $S$. Entonces $\Sp$ es no vacío ya que contiene a $S$. Ordenando a $\Sp$ por inclusión, el lema de Zorn muestra que $\Sp$ tiene un elemento maximal $M$. Si $K$ no es algebraico sobre $F(M)$, entonces $F(T)$ no es algebraico sobre $F(M)$, ya que $K$ es algebraico sobre $F(T)$. De este modo, existe $t \in T$ con $t$ trascendente sobre $F(M)$. Pero por el lema \ref{lemma:2.1.12}, $M \cup \{t\}$ es algebraicamente independiente sobre $F$ y es un subconjunto de $T$, contradiciendo la maximalidad de $M$. De este modo, $K$ es algebraico sobre $F(M)$, así que $M$ es una base de trascendencia de $K/F$ contenida en $T$.
 \end{proof}
 
 Mostremos ahora que dos bases de trascendencia cualesquiera tienen el mismo tamaño.

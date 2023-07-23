@@ -1,0 +1,88 @@
+\section{Anillo de fracciones}
+
+See $A$ un dominio entero; existe un campo $K \supset A$, llamado el \emph{campo de fracciones} de $A$ con la propiedad de que cada $c \in K$ puede ser escrita en la forma $c = ab^{-1}$, $a, b \in A$, $b \neq 0$. Por ejemplo, $\Q$ es el campo de fracciones de $\Z$ y $k(x)$ es el campo de fracciones de $k[x]$.
+
+Sea $A$ un dominio entero con campo de fracciones $K$. Un subconjunto $S$ de $A$ se llama \emph{multiplicativo} si $0 \notin S$, $1 \in S$ y $S$ es cerrado bajo la multiplicación. Si $S$ es un subconjunto multiplicativo, entonces Definimos
+\[
+  S^{-1}A = \set{\frac{a}{b} : b \in S}.
+\]
+Obviamente es un subanillo de $K$, llamado el \emph{anillo de fracciones de $A$ con respecto a $S$}. Tenemos también un homomorfismo inyectivo de anillos $f\colon A \to S^{-1}A$ definido por $f(x) = x/1$, que tiene la siguiente propiedad universal.
+
+\begin{proposition}
+  Sea $g\colon A \to B$ un homomorfismo de anillos tal que $g(s)$ es una unidad en $B$ para todo $s \in S$. Entonces existe un único homomorfismo $h\colon S^{-1}A \to B$ tal que $g = h \circ f$.
+\end{proposition}
+\begin{proof}
+  Unicidad. Si $h$ satisface las condiciones, entonces $h(a/1) = h(f(a)) = g(a)$ para todo $a \in A$; de aquí, si $s \in S$, 
+  \[
+    h\paren{\frac{1}{s}} = h\paren{\paren{\frac{s}{1}}^{-1}} =  h\paren{\frac{s}{1}}^{-1} = g(s)^{-1}
+  \]
+  y por lo tanto $h(a/s) = h(a/1) h(1/s) = g(a)g(s)^{-1}$, así que $h$ está determinado de manera única por $g$.
+
+  Existencia. Sea $h(a/s) = g(a)g(s)^{-1}$. Entonces si $h$ está bien definido será claramente un homomorfismo de anillos. Suponga que $a/s = a'/s'$; entonces $as' = a's$ y de aquí
+  \[
+    g(a)g(s') = g(a')g(s);
+  \]
+  ahora $g(s)$ y $g(s')$ son unidades en $B$ y por lo tanto $g(a)g(s)^{-1} = g(a')g(s')^{-1}$.
+\end{proof}
+
+\begin{example}~
+\begin{enumerate}
+  \item Sea $t$ un elemento distinto de cero de $A$; entonces
+    \[
+      S_t = \{1,t,t^2,\ldots\}
+    \]
+  es un subconjunto multiplicativo de $A$ y escribimos (algunas veces) $A_t$ en lugar de $S^{-1}A$. Por ejemplo si $d$ es un entero distinto de cero,
+  \[
+    \Z_d = \set{ \frac{a}{d^{n}} \in \Q : a \in \Z,  n \geq 0 }.
+  \]
+  Consiste de aquellos elementos de $\Q$ cuyo denominador es alguna potencia de $d$.
+
+  \item Si $P$ es un ideal primo, entonces $S_P = A \sm P$ es un conjunto multiplicativo (si ni $a$ ni $b$ pertenecen a $P$, entonces $ab$ no pertenece  a $P$). Escribimos $A_P$ en su lugar $S^{-1}_P A.$ Por ejemplo,
+  \[
+    \Z_{(p)} = \set{\frac{m}{n} \in \Q : n \ \text{no es divisible por}\ p}.
+  \]
+\end{enumerate}
+\end{example}
+
+\begin{proposition}
+  Sea $A$ un dominio entero y sea $S$ un subconjunto multiplicativo de $A$. Si $I$ es un ideal de $A$, entonces $I^{e} = S^{-1} I = S^{-1}A$ si y solo si $I \cap S \neq \emptyset$. La función
+  \[
+    P \mapsto S^{-1}P = \{\frac{a}{s} : a \in P, s \in S\}
+  \]
+  es una biyección del conjunto de ideales primos en $A$ tales que $P \cap S = \emptyset$ al conjunto de ideales primos en $S^{-1}A$; la función inversa es $Q \mapsto Q \cap A$.
+\end{proposition}
+\begin{proof}
+  El ideal extendido $I^e = S^{-1}I$ por que cualquier $y \in I^e$ es de la forma $\sum a_i/s_i$, donde $a_i \in I$ y $s_i \in S$; lleve esta fracción a un denominador común. La afirmación $S^{-1} I = S^{-1}A$ si y solo si $I \cap S = \emptyset$ es trivial. Es fácil ver que si:
+  \begin{itemize}
+    \item $P$ es un ideal primo disjunto de $S$ implica que $S^{-1}P$ es un ideal primo.
+    \item $Q$ es un ideal primo en $S^{-1}A$ implica que $Q \cap A$ es un ideal primo disjunto de $S$.
+  \end{itemize}
+
+  Por lo tanto lo único que tenemos que mostrar es que las dos funciones son inversas, i.e., 
+  \[
+    (S^{-1}P) \cap A = P
+      \Eqand
+    S^{-1}(Q \cap A) = Q.
+  \]
+
+  Para la primera igualdad. Claramente $(S^{-1}P) \cap A \supseteq P$. Para la otra inclusión, sea $a/s \in (S^{-1}P) \cap A$, $a\in P$, $s \in S$. Considere la ecuación $(a/s)s = a \in P$. Ya que ambos $a/s$ y $s$ están en $A$, entonces $a/s$ o $s$ está en $P$ (por que es primo); pero $s \notin P$ por hipótesis y por lo tanto $a/s \in P$.
+
+  Para la segunda igualdad. Claramente $S^A{-1}(Q \cap A) \subseteq Q$ por que $Q \cap A .\subseteq Q$ y $Q$ es un ideal en $S^{-1}A$. Para la otra inclusión, sea $b \in Q$. Podemos escribirlo como $b = a/s$ con $a \in A$, $s \in S$. Entonces $a = s(a/s) \in Q \cap A$ y por lo tanto $a/s \in S^{-1}(Q \cap A)$.
+\end{proof}
+
+\begin{example}
+  Si $P$ es un ideal primo de $A$, $A_P$ es un anillo local (por que $P$ contiene cada ideal primo disjunto de $S_P$). Listamos los ideales primos de algunos anillos:
+  \begin{itemize}
+    \item $\Z$: $(2)$, $(3)$, $(5)$, $(7)$, $(11)$, \dots, $(0)$;
+    \item $\Z_2$: $(3)$, $(5)$, $(7)$, $(11)$, \dots, $(0)$;
+    \item $\Z_(2)$: $(2)$, $(0)$;
+    \item $\Z_{42}$: $(5)$, $(11)$, $(13)$, \dots, $(0)$;
+    \item $\Z/(42)$: $(2)$, $(3)$, $(7)$.
+  \end{itemize}
+
+  Note que en general, si $t$ es un elemento distinto de cero de un dominio entero, 
+  \begin{itemize}
+    \item $\{\text{ideales primos de $A_t$}\} \leftrightarrow \{\text{ideales primos de $A$ que no contienen a $t$}\}$,
+    \item  $\{\text{ideales primos de $A/(t)$}\} \leftrightarrow \{\text{ideales primos de $A$ que contienen a $t$}\}$.
+  \end{itemize}
+\end{example}

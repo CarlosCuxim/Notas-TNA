@@ -1,0 +1,41 @@
+\section{Anillos noetherianos}
+
+\begin{lemma}
+  Las condiciones siguientes sobre un anillo son equivalentes:
+  \begin{subtheorem}
+    \item Cada ideal en $A$ es finitamente generado.
+    \item Cada cadena ascendente de ideales
+      \[ I_1 \subseteq I_2 \subseteq \cdots \subseteq I_n \cdots \]
+      se estaciona, i.e., después de un cierto punto $I_n = I_{n+1} = \cdots$.
+    \item Cada conjunto no vacío $S$ de ideales en $A$ tiene un elemento maximal $I$, i.e., existe un ideal $I$ en $S$ que no está contenido en cualquier otro ideal en $S$.
+  \end{subtheorem}
+\end{lemma}
+\begin{proof}
+  $(a) \Rightarrow (b)$ Sea $ I = \bigcup I_i$, es un ideal y de aquí es finitamente generado, digamos $I = (a_1,\ldots, a_r)$. Para algún $n$ el ideal $I_n$ contendrá a todos los $a_i$ y de este modo $I_n = I_{n+1} = \cdots$.
+
+  \nextpart
+  $(b) \Rightarrow (a)$ Considere un ideal $I$. Si $I = (0)$, entonces $I$ es generado por el conjunto vacío, el cual es finito. De otro modo, existe un elemento $a_1 \in I$, $a_1 \neq 0$. Si $I = (a_1)$ entonces, ciertamente, $I$ es finitamente generado. Si nom existe un elemento $a_2 \in I$ tal que $(a_1) \subsetneq (a_1, a_2)$. Continuando de esta manera, obtenemos una cadena de ideales
+  \[
+    (a_1) \subsetneq (a_1, a_2) \subsetneq (a_1,a_2,a_3) \subsetneq \cdots
+  \]
+  Este proceso debe detenerse en algún momento con $(a_1,\ldots,a_n) = I$.
+
+  \nextpart
+  $(b)\Rightarrow (c)$ Sea $I_1 \in S$. Si $I_1$ no es un elemento maximal de $S$, entonces existe un $I_2$ tal que $I_1 \subsetneq I_2$. Si $I_2$ no es maximal, existe un $I_3$, etc. De $(b)$, sabemos que este proceso conducirá a un elemento maximal después de, únicamente, un número finito de pasos.
+
+  \nextpart
+  $(c)\Rightarrow (b)$ Aplique $(c)$ al conjunto $S = \{I_1,I_2,\ldots\}$.
+\end{proof}
+
+Un anillo satisfaciendo cualquiera de las condiciones equivalentes es llamado \emph{noetheriano}.
+
+Un teorema famoso, el \emph{teorema de la base de Hilbert}, establece que el anillo no polinomios $k[x_1,\ldots,x_n]$ es noetheriano. En la práctica casi todos los anillos que surgen naturalmente en la \emph{Teoría de Números Algebraicos} o en \emph{Geometría Algebraica} son noetherianos; pero, desde luego, no todos los anillos son noetherianos.
+
+Por ejemplo, $k[x_1,\ldots,x_n,\ldots]$ no es noetheriano: $x_1, \ldots, x_n$ es un conjunto mínimo de generadores para el ideal $(x_1,\ldots,x_n)$ en $k[x_1,\ldots,x_n]$ y $x_1,\ldots,x_n,\ldots$ es un conjunto mínimo de generadores de $(x_1,\ldots,x_n,\ldots)$ en $k[x_1,\ldots,x_n,\ldots]$.
+
+\begin{proposition}
+  Cada elemento distinto de cero que no es una unidad de un dominio entero noetheriano se puede escribir como un producto de elementos irreducibles.
+\end{proposition}
+\begin{proof}
+  Suponga que el enunciado es falso y escoja un elemento $a\in A$ que contradiga el enunciado y es tal que $(a)$ es maximal entre los ideales generados por dichos elementos (aquí usamos que $A$ es noetheriano). Ya que $a$ no puede ser escrito como un producto de elementos irreducibles, él mismo no es irreducible y, de este modo, $a = bc$ con $b$ y $c$ no unidades. Claramente $(a) \subseteq (b) $ y los ideales no pueden ser iguales por que de lo contrario $c$ sería unidad. De la maximalidad de $a$, podemos deducir que $b$ puede ser escrito como un producto de elementos irreducibles y similarmente para $c$. Por lo tanto, $a$ es un producto de elementos irreducible (contradicción).
+\end{proof}

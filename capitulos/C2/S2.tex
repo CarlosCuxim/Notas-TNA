@@ -153,3 +153,80 @@ para algunos $u_i \in U$ y $v_i \in U$. Sin embargo, esta representación no es 
   \]
   Notemos que si $w = u \tensor v$ entonces $\lambda_1 = 0$ o $\mu_2 = 0$, sin embargo, esto implicaría que $\lambda_1\mu_1 = 0$ o $\lambda_2\mu_2 = 0$, lo cual es una contradicción. Así $w$ no puede ser expresado de la forma $u \tensor v$.
 \end{example}
+
+Como se mencionó anteriormente, quizás la propiedad más fundamental del producto tensorial de espacios vectoriales, además de la propiedad universal, es que la dimensión de $U \tensor V$ es igual a $\dim U \cdot \dim V$. Este resultado no es tan simple de probar, y requerirá algunos resultados previos.
+
+\begin{lemma}
+  Sea $u_1,\ldots,u_r$ vectores linealmente independientes en $U$ y $v_1, \ldots,v_r$ vectores arbitrarios de $V$, entonces la ecuación
+    \[
+      \sum_{i=1}^r u_i \tensor v_i = 0,
+    \]
+  implica que $b_i = 0$ para todo $i=1,\ldots,r$.
+\end{lemma}
+\begin{proof}
+  Dado que cada $u_i$ es linealmente independiente podemos expandirlo a una base de $U$, de esta forma, por propiedades de los espacios duales, podemos construir $r$ transformaciones lineales $f_i\colon V \to F$ tales que
+    \[
+      f_i(u_j) = \delta_{ij} \qquad i,j=1,\ldots,r.
+    \]
+  
+    De esta manera, para cada conjunto de transformaciones lineales $g_i\colon V \to W$ podemos considerar la función bilineal $\Phi\colon U \times V \to W$ dado por
+    \[
+      \Phi(u,v) = \sum_{i=1}^r f_i(x) g_i(y).
+    \]
+    y por ende, usando la propiedad universal, tenemos que existe una transformación lineal $F\colon U \tensor V \to W$ tal que $F(u \tensor v) = \Phi(u,v)$.
+
+    De esta manera, dado que $\sum_{i=1}^r u_i \tensor v_i = 0$, entonces, aplicando la función $F$ tenemos que
+    \[
+      F\biggl(\sum_{i=1}^r u_i \tensor v_i \biggr) = \sum_{i,j=1}^r f_i(u_j)g_i(v_j) = \sum_{i=1}^r g_i(v_i) = 0.
+    \]
+
+    Dado que los $g_i$ son arbitrarios, podemos elegir $g_k = \Id$ para algún $k=1,\ldots,r$ y $g_i = 0$ para $i \neq k$, lo que muestra que
+    \[
+      \sum_{i=1}^r g_i(v_i) = v_k = 0,
+    \]
+    para cada $k=1,\ldots,r$.
+\end{proof}
+
+\begin{corollary}
+  Sea $\{u_i\}_{i\in I}$ y $\{v_j\}_{j\in J}$ bases de $U$ y $V$ respectivamente, entonces $\{u_i \tensor v_j\}_{(i,j)\in I \times J}$ forma una base de $U \tensor V$. En particular 
+  \[
+    \dim(U\tensor V) = \dim U \cdot \dim V.
+  \]
+\end{corollary}
+\begin{proof}
+  El hecho de que $\{u_i \tensor v_j\}$ genere a $U \tensor V$ se da ya que $\tensor$ es bilineal y $\{u_i\}$ y $\{v_j\}$ generan a $U$ y $V$ respectivamente. La independencia lineal, se da ya que si
+  \[
+    \sum_{k=1}^r\sum_{\ell=1}^s \lambda_{k\ell} u_{i_k} \tensor v_{j_\ell} = 0,
+  \]
+  entonces, agrupando por cada $u_{i_k}$ y aplicando la proposición anterior, se tiene que $\sum_{\ell=1}^s \lambda_{k\ell} v_{j_\ell}=0$ lo que, por independencia lineal, implica que $\lambda_{k\ell}=0$.
+\end{proof}
+
+\begin{corollary}
+  Sean $U$ y $V$ espacios vectoriales sobre $F$. Si $\{u_i\}_{i\in I}$ es una base para $U$, entonces cada elemento de $U \tensor V$ tiene una representación única como suma finita $\sum_{i=1}^r u_i \tensor v_i$ para algunos $v_i\in V$.
+\end{corollary}
+\begin{proof}
+  La existencia es clara, si $w = \sum_{i=1}^s x_i \tensor y_i$ basta con expandir los elementos $x_i$ como combinaciones lineales de los $u_i$ y agrupar con respecto a estos últimos. La unicidad se da ya que si 
+  \[
+    w = \sum_{i=1}^r u_i \tensor v_i = \sum_{i=1}^r u_i \tensor v_i',
+  \]
+  entonces $\sum_{i=1}^r u_i \tensor (v_i-v_i') = 0$, lo que, por el lema anterior, implica que $v_i = v_i'$.
+\end{proof}
+
+Finalizamos esta sección discutiendo el producto tensorial de $F$-álgebras. Si $A$ es a la vez un anillo y un $F$-espacio vectorial, entonces $A$ es llamado una $F$-álgebra si 
+\[
+  \alpha (ab) = (\alpha a)b = a (\alpha b)
+\]
+para todo $a,b \in A$ y todo $\alpha \in F$; esto es, existe compatibilidad entre la multiplicación del anillo $A$ y la multiplicación escalar. Si $A$ y $B$ son $F$-álgebras, entonces podemos definir una multiplicación sobre $A \tensor B$ por medio de la fórmula
+\begin{equation}
+  (a \tensor b)(a' \tensor b') = aa' \tensor bb'. \label{eq:mult-tensor-alg}
+\end{equation}
+Dejamos al lector verificar el resultado siguiente.
+
+\begin{proposition}
+  Sean $A$ y $B$ álgebras sobre $F$. La ecuación \eqref{eq:mult-tensor-alg} es una multiplicación bien definida sobre $A \tensor B$ y con respecto a esta multiplicación, $A\tensor B$ es una $F$-álgebra.
+\end{proposition}
+
+
+
+
+

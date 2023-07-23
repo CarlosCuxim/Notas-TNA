@@ -1,0 +1,32 @@
+\section{Extensión y contracción}
+
+Sea $f\colon A \to B$ un homomorfismo de anillos. Si $I$ es un ideal de $A$, el conjunto $f(I)$  no es necesariamente un ideal de $B$ (e.g. sea $f$ la inmersión de $\Z$ en $\Q$, el campo de los racionales y sea $I$ cualquier ideal distinto de cero de $\Z$). Definimos la \emph{extensión} $I^\ext$ de $I$ como el ideal $f(I)B$ generado por el conjunto $f(I)$ en $B$. Más explícitamente $I^\ext$ es el conjunto de las sumas finitas $\sum y_i f(x_i)$ donde $x_i \in I$ e $y_i \in B$.
+
+Si $J$ es un ideal de $B$, entonces $f^{-1}(J)$ es siempre un ideal de $A$, llamado la \emph{contracción}  $J^\cont$ de $J$. Si $J$ es primo, entonces $J^\cont$ es primo. Si $I$ es primo $I^\ext$ no es necesariamente primo (por ejemplo $f\colon \Z \to \Q$ con $I\neq 0$; entonces $I^\ext = \Q$, que no es un ideal primo).
+
+\begin{proposition}
+  Sea $f\colon A \to B$ un homomorfismo de anillos, $I\subseteq A$ y $J\subseteq B$ ideales, se cumple las siguiente propiedades:
+  \begin{subtheorem}
+    \item $I \subseteq I^{\ext\cont}$ y $J^{\cont\ext} \subseteq J$.
+    \item $J^\cont = J^{\cont\ext\cont}$ y $I^\ext = I^{\ext\cont\ext}$.
+  \end{subtheorem}
+\end{proposition}
+\begin{proof}
+  $(a)$ es trivial y $(b)$ se sigue de $(a)$.
+\end{proof}
+
+
+
+
+\ExerciseSection
+
+\begin{ExerciseList}
+  \item Si $I_1$, $I_2$ son ideales de $A$ y $J_1$, $J_2$ son ideales de $B$, entonces
+    \begin{enumerate}
+      \item $(I_1+I_2)^\ext = I_1^\ext + I_2^\ext$ y $(J_1+J_2)^\cont \supseteq J_1^\cont + J_2^\cont$.
+      \item $(I_1 \cap I_2)^\ext \subseteq I_1^\ext \cap I_2^\ext$ y $(J_1 \cap J_2)^\cont = J_1^\cont \cap J_2^\cont$.
+      \item $(I_1 I_2)^\ext = I_1^\ext I_2^\ext$ y $(J_1 J_2)^\cont \supseteq J_1^\cont J_2^\cont$
+    \end{enumerate}
+
+  \item Suponga que $f\colon A \to B $ y $g\colon A \to C$ son homomorfismos de anillos y que $h\colon B \to C$ es un isomorfismo que satisface $g = h \circ f$. Muestra que para cualquier ideal $I$ de $A$, $h$ se restringe a un isomorfismo entre $f(I)B$ y $g(I)C$.
+\end{ExerciseList}
