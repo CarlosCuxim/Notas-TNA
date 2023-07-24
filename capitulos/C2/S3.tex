@@ -1,0 +1,119 @@
+\section{Disjuntez lineal}
+
+En esta sección, estudiaremos disjuntez lineal, una condición técnica, pero una con muchas aplicaciones. Una manera de usarla es para extender la definición de separabilidad a extensiones no algebraicas.
+
+\begin{definition}
+  Sean $K$ y $L$ subcampos de un campo $C$ conteniendo un campo $F$. Entonces $K$ y $L$ son \emph{linealmente disjuntos sobre $F$} si cada subconjunto de $K$ que es $F$-linealmente independiente es también linealmente independiente sobre $L$.
+\end{definition}
+
+Sean $A$ y $B$ subanillos de un anillo conmutativo $R$ con identidad $1_R$. Entonces el anillo $A[B]$ es el subanillo de $R$ generado por $A$ y $B$; esto es, $A[B]$ es el subanillo más pequeño de $R$ conteniendo $A\cup B$. No es difícil mostrar que
+  \[
+    A[B] = \Bigl\{ \sum a_ib_i : a_i \in A, b_i \in B \Bigr\}.
+  \]
+
+Si $A$ y $B$ contienen un campo común $F$, entonces la propiedad universal del producto tensorial muestra que existe una $F$-transformación lineal $\varphi\colon A \tensor B \to A[B]$ dada sobre los generadores como $\varphi(a\tensor b) = ab$. Nos referimos al mapeo $\varphi$ como el mapeo natural de $A \tensor B$ a $A[B]$. Damos un criterio en términos de productos tensoriales para que dos campos sean linealmente disjuntos sobre un subcampo común.
+
+\begin{proposition}\label{prop:2.3.2}
+  Sean $K$ y $L$ extensiones de un campo $F$. Entonces $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si el mapeo $\varphi\colon K \tensor L \to K[L]$ dado sobre los generadores como $a \tensor b \to ab$ es un isomorfismo de $F$-espacios vectoriales.
+\end{proposition}
+\begin{proof}
+  El mapeo natural $\varphi\colon K \tensor L \to K[L]$ es suprayectivo por la descripción de $K[L]$ dada arriba. Así, necesitamos mostrar que $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si $\varphi$ es inyectivo.
+
+  Supongamos primero que $K$ y $L$ son linealmente disjuntos sobre $F$. Sea $\{k_i\}_{i\in I}$ una base de $K$ como un $F$-espacio vectorial. Cada elemento de $K \tensor L$ tiene una representación única en la forma $\sum k_i \tensor l_i$, con los $l_i \in L$. Suponga que $\sum k_i \tensor l_i \in \ker \varphi$, de modo tal que $\sum k_il_i = 0$. Entonces cada $l_i=0$, ya que $K$ y $L$ son linealmente disjuntos sobre $F$ y $\{k_i\}$ es $F$-linealmente independiente. De este modo, $\varphi$ es inyectiva y por lo tanto $\varphi$ es un isomorfismo.
+
+  Recíprocamente, suponga que el mapeo $\varphi$ es un isomorfismo. Sea $\{a_j\}_{j\in J}$ un subconjunto de $K$ linealmente independiente sobre $F$. Si $\{a_j\}$ no es $L$-linealmente independiente, entonces existen $l_j \in L$ no todos cero, con $\sum a_j l_j=0$. Entonces $\sum a_j \tensor l_j \in \ker \varphi$, así que $\sum a_j \tensor l_j = 0$. Sin embargo, por el lema \ref{lemma:tensor-equal-zero} tenemos que $l_j=0$, una contradicción. De este modo $\{a_j\}$ es $L$-linealmente independiente. Por lo tanto $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{proof}
+
+\begin{corollary}
+  La definición de disjuntez es simétrica; esto es, $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si $L$ y $K$ son linealmente disjuntos sobre $F$.
+\end{corollary}
+\begin{proof}
+  Se sigue de la proposición anterior. El mapeo $\varphi\colon K \tensor L \to K[L]$ es un isomorfismo si y solo si $\tau\colon L \tensor K \to L[K] = K[L]$ es un isomorfismo, ya que $\tau = \varphi \circ i$, donde $i$ es el isomorfismo canónico $L \tensor K \to K \tensor L$ que manda $a \tensor b$ a $b \tensor a$.
+\end{proof}
+
+\begin{lemma}
+  Suponga que $K$ y $L$ son extensiones finitas de $F$. Entonces $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si $[KL:F]=[K:L][L:F]$.
+\end{lemma}
+\begin{proof}
+  El mapeo natural $\varphi\colon K \tensor L \to K[L]$ que manda $k \tensor l$ a $kl$ es suprayectivo y
+  \[
+    \dim(K \tensor L) = [K:F][L:F].
+  \]
+  De este modo, $\varphi$ es un isomorfismo si y solo si $[KL:F]=[K:F][L:F]$.
+\end{proof}
+
+\begin{example}
+  Suponga que $K$ y $L$ son extensiones de $F$ con $[K:F]$ y $[L:F]$ primos relativos. Entonces $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{example}
+
+\begin{example}
+  Sea $K$ una extensión de Galois finita sobre $F$. Si $L$ es cualquier extensión de $F$, entonces $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si $K\cap L=F$. Esto se sigue del teorema de las irracionalidades naturales ya que
+  \[
+    [KL:F] = [L:F] [K:K\cap L],
+  \]
+  así que $[KL:F] = [ K:F] [L:F] $ si y solo si $K\cap L=F$.
+\end{example}
+
+La caracterización de disjuntez lineal por medio del producto tensorial nos conduce a creer que existe una noción razonable de disjuntez lineal para anillos, no únicamente para campos.
+
+\begin{definition}
+  Sean $A$ y $B$ subanillos de un campo $C$, cada uno conteniendo un campo $F$. Entonces $A$ y $B$ son \emph{linealmente disjuntos} sobre $F$ si el mapeo natural $A \tensor B \to C$ dado por $a \tensor b \to ab$ es inyectivo.
+\end{definition}
+
+\begin{lemma}
+  Suponga que $F$ es un campo y $F\subseteq A\subseteq A'$ y $F\subseteq B\subseteq B'$ son subanillos de un campo $C$. Si $A'$ y $B'$ son linealmente disjuntos sobre $F$, entonces $A $ y $B$ son linealmente disjuntos sobre $F$.
+\end{lemma}
+\begin{proof}
+  Esto se sigue inmediatamente de las propiedades del producto tensorial. Existe un homomorfismo natural inyectivo $i\colon A\tensor B \to A' \tensor B'$ mandando $a \tensor b$ a $a \tensor b$ para $a \in A$ y $b \in B$. Si el mapeo natural $\varphi'\colon A' \tensor B' \to A'[B'] $ es inyectivo, entonces la restricción de $\varphi'$ a la imagen de $i$ muestra que el mapeo $\varphi\colon A \tensor B \to A[B]  $ es inyectivo también.
+\end{proof}
+
+
+\begin{example}
+  Sean $K$ y $L$ extensiones de un campo $F$. Si $K\cap L$ es más grande que $F$, entonces $K$ y $L$ no son linealmente disjuntos sobre $F$ por el lema precedente ya que $K\cap L$ no es linealmente disjunto a sí mismo sobre $F$. Sin embargo, $K$ y $L$ podrían no ser linealmente disjuntos aún si $K\cap L=F$. Como un ejemplo, sea $F=\Q$, $K=F(\sqrt[3]{2}) $ y $L=F(  w\sqrt[3]{2})  $, donde $w$ es una raíz cúbica primitiva de la unidad. Entonces $K\cap L=F$, pero $KL=F(\sqrt[3]{2}, w)$ tiene dimensión $6$ sobre $F$, mientras  que $K \tensor L$ tiene dimensión $9$, así que el mapeo $K\tensor L\to KL$ no es inyectivo.
+\end{example}
+
+\begin{lemma}
+  Suponga que $A$ y $B$ son subanillos de un campo $C$, cada uno conteniendo un campo $F$, con campos de cocientes $K$ y $L$ respectivamente. Entonces $A$ y $B$ son linealmente disjuntos sobre $F$ si y solo si $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{lemma}
+\begin{proof}
+  Si $K$ y $L$ son linealmente disjuntos sobre $F$, entonces $A$ y $B$ también son linealmente disjuntos sobre $F$ por el lema previo. 
+  
+  Recíprocamente, suponga que $A$ y $B$ son linealmente disjuntos sobre $F$. Sean $\{  k_1, \ldots, k_n\}  \subseteq K$ un conjunto $F$-linealmente independiente y suponga que existen $l_i\in L$ no todos cero con $\sum k_i l_i = 0$. Existe $s \neq 0 \in A$ y $t \neq 0 \in B$ tal que $a_i = sk_i \in A$ y $b_i = t l_i \in B$ para toda $i$. El conjunto $\{ a_1, \ldots, a_n \} $ es también $F$-linealmente independiente; consecuentemente, $\sum a_i \tensor b_i \neq 0$, ya que es mapeado al elemento distinto de cero $\sum a_i \tensor b_i \in K \tensor L$ bajo el mapeo natural $A \tensor B \to K \tensor L$. Sin embargo, $\sum a_i \tensor b_i$ está en el núcleo del mapeo $A \tensor B \to A[B]$; de aquí, es cero por la suposición de que $A$ y $B$ son linealmente disjuntos sobre $F$. Esto muestra que los $k_i$ son $L$-linealmente independientes, así que $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{proof}
+
+\begin{example}\label{exam:5.34}
+  Suponga que $K/F$ es una extensión algebraica y que $L/F$ es una extensión puramente trascendente. Entonces $K$ y $L$ son linealmente disjuntos sobre $F$; para ver esto, sea $X$ un conjunto algebraicamente independiente sobre $F$ con $L=F(X)$. Del lema previo, es suficiente mostrar que $K$ y $F[X]$ son linealmente disjuntos sobre $F$. Podemos ver $F[X]  $ como un anillo de polinomios en las variables $x \in X$. El anillo generado por $K$ y $F[X]$ es el anillo de polinomios $K[X]$. El homomorfismo estándar $\varphi\colon K \tensor F[X]  \to K[X]$ es un isomorfismo porque existe un homomorfismo de anillos $\tau\colon K[X] \to K \tensor F[X]$ inducido por $x\mapsto 1 \tensor x$ para cada $x\in X$ y este es el inverso de $\varphi$. De este modo, $K$ y $F[X]$ son linealmente disjuntos sobre $F$, así que $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{example}
+
+El teorema siguiente es una propiedad de transitividad para la disjuntez lineal.
+
+\begin{theorem}\label{theo:37}
+  Sean $K$ y $L$ campos extendiendo $F$ y sea $E$ un campo con $F\subseteq E\subseteq K$. Entonces $K$ y $L$ son linealmente disjuntos sobre $F$ si y solo si $E$ y $L$ son linealmente disjuntos sobre $F$ y $K$ y $EL$ son linealmente disjuntos sobre $E$.
+\end{theorem}
+\begin{proof}
+  Tenemos la siguiente torre de campos.
+  \[
+  \begin{tikzcd}
+    & KL & & \\
+    K \arrow[ru] & & EL \arrow[lu] & \\
+    & E \arrow[ru] \arrow[lu] & & L \arrow[lu] \\
+    & & F \arrow[lu] \arrow[ru] &             
+  \end{tikzcd}
+  \]
+
+  Considere la sucesión de homomorfismos
+  \[
+    K \tensor L \labto{f} K \tensor (E \tensor L)
+      \labto{\varphi_1} K \tensor E [L]
+      \labto{\varphi_2} K[L],
+  \]
+  donde los mapeos $f$, $\varphi_1$ y $\varphi_2$ están dados sobre los generadores por
+  \begin{align*}
+    f(k\tensor l) &= k \tensor (1\tensor l), \\
+    \varphi_1 \bigl(k\tensor (e\tensor l)  \bigr) &= k\tensor el,\\
+    \varphi_2 \Bigl(k\tensor\sum e_i l_i\Bigr) &= \sum ke_i l_i,
+  \end{align*}
+  respectivamente. Cada uno está bien definido por la propiedad universal del producto tensorial. El mapeo $f$ es un isomorfismo. Además, $\varphi_1$ y $\varphi_2$ son suprayectivos. La composición de esos tres mapeos es el mapeo estándar $\varphi\colon K \tensor L \to K[L]$. Primero, suponga que $K$ y $L$ son linealmente disjuntos sobre $F$. Entonces $\varphi$ es un isomorfismo por la proposición \ref{prop:2.3.2}. Esto fuerza a ambos $\varphi_1$ y $\varphi_2$ a ser isomorfos, ya que todos los mapeos en cuestión son suprayectivos. La inyectividad de $\varphi_2$ implica que $K$ y $EL$ son linealmente disjuntos sobre $E$. Si $\sigma\colon E\tensor L \to E[L]$ es el mapeo estándar, entonces $\varphi_1$ es dado sobre los generadores por $\varphi_1( k\tensor (e\tensor l)) = k \tensor \sigma(  e\tensor l)  $; de aquí, $\sigma$ es también inyectivo. Esto muestra que $E$ y $L$ son linealmente disjuntos sobre $F$.
+
+  Recíprocamente, suponga que $E$ y $L$ son linealmente disjuntos sobre $F $ y que $K$ y $EL$ son linealmente disjuntos sobre $E$. Entonces $\varphi_2$ y $\sigma$ son isomorfismos por la proposición \ref{prop:2.3.2}. El mapeo $\varphi_1$ es también un isomorfismo por las relaciones entre $\varphi_1$ y $\sigma$. De aquí, $\varphi$ es un isomorfismo. Usando la proposición \ref{prop:2.3.2} de nuevo, vemos que $K$ y $L$ son linealmente disjuntos sobre $F$.
+\end{proof}

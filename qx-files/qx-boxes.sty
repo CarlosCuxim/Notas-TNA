@@ -64,9 +64,16 @@
 
 % CAJAS {definition} Y {definition*} -------------------------------------------
 
+% \refstepcounter que afecta globalmente al contador
+\def\grefstepcounter#1{\stepcounter{#1}%
+  \edef\@currentcounter{#1}%
+  \protected@xdef\@currentlabel
+    {\csname p@#1\expandafter\endcsname\csname the#1\endcsname}%
+}
+
 % Definición de la caja
 \newtcolorbox{definition}[1][\relax]{
-  title       = {\refstepcounter{theorem}Definición \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.},
+  title       = {\grefstepcounter{theorem}Definición \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.},
   coltitle    = black,
   fonttitle   = \bfseries,
   colback     = white,
@@ -127,8 +134,8 @@
 
 % Entorno de ejemplos
 \newenvironment{example}[1][\relax]%
-  {\begin{qx-example-box}%
-    {\bfseries Ejemplo \refstepcounter{theorem}\thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
+  {\begin{qx-example-box}\refstepcounter{theorem}%
+    {\bfseries Ejemplo \thetheorem\ifx#1\relax\else\space{\normalfont(#1)}\fi.}\space\ignorespaces}%
   {\end{qx-example-box}}
 
 % Entorno de ejemplos sin numeración

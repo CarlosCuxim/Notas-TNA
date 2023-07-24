@@ -156,7 +156,7 @@ para algunos $u_i \in U$ y $v_i \in U$. Sin embargo, esta representación no es 
 
 Como se mencionó anteriormente, quizás la propiedad más fundamental del producto tensorial de espacios vectoriales, además de la propiedad universal, es que la dimensión de $U \tensor V$ es igual a $\dim U \cdot \dim V$. Este resultado no es tan simple de probar, y requerirá algunos resultados previos.
 
-\begin{lemma}
+\begin{lemma}\label{lemma:tensor-equal-zero}
   Sea $u_1,\ldots,u_r$ vectores linealmente independientes en $U$ y $v_1, \ldots,v_r$ vectores arbitrarios de $V$, entonces la ecuación
     \[
       \sum_{i=1}^r u_i \tensor v_i = 0,
@@ -196,9 +196,9 @@ Como se mencionó anteriormente, quizás la propiedad más fundamental del produ
 \begin{proof}
   El hecho de que $\{u_i \tensor v_j\}$ genere a $U \tensor V$ se da ya que $\tensor$ es bilineal y $\{u_i\}$ y $\{v_j\}$ generan a $U$ y $V$ respectivamente. La independencia lineal, se da ya que si
   \[
-    \sum_{k=1}^r\sum_{\ell=1}^s \lambda_{k\ell} u_{i_k} \tensor v_{j_\ell} = 0,
+    \sum_{k=1}^r\sum_{l=1}^s \lambda_{kl} u_{i_k} \tensor v_{j_l} = 0,
   \]
-  entonces, agrupando por cada $u_{i_k}$ y aplicando la proposición anterior, se tiene que $\sum_{\ell=1}^s \lambda_{k\ell} v_{j_\ell}=0$ lo que, por independencia lineal, implica que $\lambda_{k\ell}=0$.
+  entonces, agrupando por cada $u_{i_k}$ y aplicando la proposición anterior, se tiene que $\sum_{l=1}^s \lambda_{kl} v_{j_l}=0$ lo que, por independencia lineal, implica que $\lambda_{kl}=0$.
 \end{proof}
 
 \begin{corollary}
